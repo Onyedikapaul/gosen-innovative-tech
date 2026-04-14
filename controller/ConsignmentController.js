@@ -2,6 +2,10 @@ import express from "express";
 import { checkAuth } from "../middleware/checkAuth.js";
 import Consignment from "../model/ConsignmentModel.js";
 import generateTrackingNumber from "../utils/generateTrackingNumber.js";
+import { Resend } from "resend";
+import { sendLocationUpdateEmail, sendShipmentEmail } from "../lib/mailer.js";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const ConsignmentRouter = express.Router();
 
@@ -73,6 +77,28 @@ ConsignmentRouter.post("/", checkAuth, async (req, res) => {
     });
 
     await consignment.save();
+
+    if (receiverEmail) {
+      try {
+        await sendShipmentEmail({
+          to: receiverEmail,
+          templateData: {
+            trackingNumber,
+            receiverName,
+            productName,
+            status,
+            location,
+            departure,
+            arrival,
+            senderName,
+            description,
+            price,
+          },
+        });
+      } catch (emailErr) {
+        console.error("Email send error:", emailErr);
+      }
+    }
     return res.json({ ok: true, message: "Consignment created", consignment });
   } catch (err) {
     console.error("createConsignment error:", err);
@@ -108,22 +134,8 @@ ConsignmentRouter.get("/:id", async (req, res) => {
   }
 });
 
-// ConsignmentRouter.put("/:id", checkAuth, async (req, res) => {
-//   try {
-//     const consignment = await Consignment.findByIdAndUpdate(
-//       req.params.id,
-//       req.body,
-//       { returnDocument: "after" },
-//     );
-//     if (!consignment)
-//       return res.status(404).json({ ok: false, message: "Not found" });
-//     return res.json({ ok: true, message: "Updated", consignment });
-//   } catch (err) {
-//     return res.status(500).json({ ok: false, message: "Server error" });
-//   }
-// });
 
-// UPDATE
+// Update
 ConsignmentRouter.put("/:id", checkAuth, async (req, res) => {
   try {
     const {
@@ -136,6 +148,13 @@ ConsignmentRouter.put("/:id", checkAuth, async (req, res) => {
       productName, departure, arrival,
       price, description, location, status,
     } = req.body;
+
+    // Fetch existing first to compare location
+    const existing = await Consignment.findById(req.params.id);
+    if (!existing)
+      return res.status(404).json({ ok: false, message: "Not found" });
+
+    const locationChanged = location !== undefined && location !== existing.location;
 
     const updated = await Consignment.findByIdAndUpdate(
       req.params.id,
@@ -162,14 +181,34 @@ ConsignmentRouter.put("/:id", checkAuth, async (req, res) => {
         ...(location !== undefined && { location }),
         ...(status !== undefined && { status }),
       },
-      { returnDocument: 'after', runValidators: true }
+      { returnDocument: "after", runValidators: true }
     );
 
     if (!updated)
       return res.status(404).json({ ok: false, message: "Not found" });
 
+    // Send email only if location actually changed
+    if (locationChanged && updated.receiver?.email) {
+      try {
+        await sendLocationUpdateEmail({
+          to: updated.receiver.email,
+          templateData: {
+            trackingNumber: updated.trackingNumber,
+            receiverName: updated.receiver.name,
+            location: updated.location,
+            status: updated.status,
+            productName: updated.productName,
+            arrival: updated.arrival,
+          },
+        });
+      } catch (emailErr) {
+        console.error("Location update email error:", emailErr);
+      }
+    }
+
     return res.json({ ok: true, consignment: updated });
   } catch (err) {
+    console.error("PUT consignment error:", err);
     return res.status(500).json({ ok: false, message: "Server error" });
   }
 });
