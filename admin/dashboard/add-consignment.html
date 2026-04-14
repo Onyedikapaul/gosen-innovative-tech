@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="zxx" class="js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="shortcut icon" href="#" />
+    <title>Add Consignment - GOSEN INNOVATIVE TECHNOLOGY </title>
+    <link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=101" />
+    <link rel="stylesheet" href="assets/css/style.css?ver=101" />
+    <!-- Load themify AFTER vendor so it wins -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body class="user-dashboard">
+    <div class="topbar" style="padding-top: 15px; padding-bottom: 15px">
+      <div class="topbar-md d-lg-none">
+        <div class="container">
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="#" class="toggle-nav">
+              <div class="toggle-icon">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+              </div>
+            </a>
+            <div class="site-logo">
+              <a href="../" class="site-brand"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="d-lg-flex align-items-center justify-content-between">
+          <div class="topbar-lg d-none d-lg-block">
+            <div class="site-logo">
+              <a href="../" class="site-brand"></a>
+            </div>
+          </div>
+          <div class="topbar-action d-none d-lg-block">
+            <ul class="topbar-action-list">
+              <li class="dropdown topbar-action-item topbar-action-language">
+                <a href="#" data-toggle="dropdown">
+                  EN <i class="fas fa-chevron-down"></i
+                ></a>
+              </li>
+              <li class="dropdown topbar-action-item topbar-action-user">
+                <a href="#" data-toggle="dropdown"
+                  ><img
+                    class="icon"
+                    src="assets/images/user-thumb-sm.png"
+                    alt="thumb"
+                /></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="user-dropdown">
+                    <div class="user-dropdown-head">
+                      <h6 class="user-dropdown-name">Admin</h6>
+                    </div>
+                    <ul class="user-dropdown-links">
+                      <li>
+                        <a href="account.html"
+                          ><i class="fa fa-id-badge"></i> My Profile</a
+                        >
+                      </li>
+                      <li>
+                        <a href="security.html"
+                          ><i class="fa fa-lock"></i> Security</a
+                        >
+                      </li>
+                    </ul>
+                    <ul class="user-dropdown-links">
+                      <li>
+                        <a href="#" id="logoutBtn"
+                          ><i class="fa fa-power-off"></i> Logout</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-wraper">
+      <div class="container">
+        <div class="d-flex">
+          <div class="user-sidebar">
+            <div class="user-sidebar-overlay"></div>
+            <ul class="user-icon-nav">
+              <li>
+                <a href="consignments.html"
+                  ><i class="fa fa-truck"></i> Consignments</a
+                >
+              </li>
+              <li>
+                <a href="add-consignment.html"
+                  ><i class="fa fa-pen"></i> Add Consignment</a
+                >
+              </li>
+              <li>
+                <a href="receipts.html"
+                  ><i class="fa fa-file-alt"></i> Receipts</a
+                >
+              </li>
+              <li>
+                <a href="add-receipt.html"
+                  ><i class="fa fa-pen"></i> Add Receipt</a
+                >
+              </li>
+              <!-- <li>
+                <a href="site-details.html"
+                  ><i class="fa fa-chart-pie"></i> Site Details</a
+                >
+              </li>
+              <li>
+                <a href="account.html"><i class="fa fa-user"></i> Account</a>
+              </li>
+              <li>
+                <a href="security.html"><i class="fa fa-lock"></i> Security</a>
+              </li> -->
+              <li>
+                <a href="#" id="logoutBtn2"
+                  ><i class="fa fa-power-off"></i> Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="user-content">
+            <div class="user-panel">
+              <div class="">
+                <h2>Add New Product Consignment</h2>
+
+                <p
+                  id="formMsg"
+                  style="
+                    margin-top: 10px;
+                    display: none;
+                    padding: 10px;
+                    border-radius: 4px;
+                  "
+                ></p>
+
+                <form id="consignmentForm">
+                  <div class="row">
+                    <!-- SENDER -->
+                    <div class="col-md-6">
+                      <h4>Sender Information</h4>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Sender Name</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="sender-name"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Sender Phone</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="sender-phone"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Sender Company</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="sender-company"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Sender Address</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="sender-address"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Sender City</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="sender-city"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label"
+                          >Sender State/Province</label
+                        >
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="sender-state"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Sender Country</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="sender-country"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Sender Zip Code</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="sender-zip"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Sender Email</label>
+                        <input
+                          class="input-bordered"
+                          type="email"
+                          name="sender-email"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- RECEIVER -->
+                    <div class="col-md-6">
+                      <h4>Receiver Information</h4>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Receiver Name</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="receiver-name"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Receiver Phone</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="receiver-phone"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Receiver Company</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="receiver-company"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Receiver Address</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="receiver-address"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Receiver City</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="receiver-city"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label"
+                          >Receiver State/Province</label
+                        >
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="receiver-state"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Receiver Country</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="receiver-country"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label"
+                          >Receiver Zip Code</label
+                        >
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="receiver-zip"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Receiver Email</label>
+                        <input
+                          class="input-bordered"
+                          type="email"
+                          name="receiver-email"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- PRODUCT -->
+                    <div class="col-md-12">
+                      <h4>Product Information</h4>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Product Name</label>
+                        <input class="input-bordered" type="text" name="name" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label"
+                          >Product Departure</label
+                        >
+                        <input
+                          class="input-bordered"
+                          type="date"
+                          name="product-departure"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Product Arrival</label>
+                        <input
+                          class="input-bordered"
+                          type="date"
+                          name="product-arrival"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Price</label>
+                        <input
+                          class="input-bordered"
+                          type="text"
+                          name="price"
+                        />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label"
+                          >Product Description</label
+                        >
+                        <textarea
+                          class="input-bordered"
+                          name="description"
+                          rows="3"
+                        ></textarea>
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Current Location</label>
+                        <select class="input-bordered" name="location">
+                          <option value="Afghanistan">Afghanistan</option>
+                          <option value="Albania">Albania</option>
+                          <option value="Algeria">Algeria</option>
+                          <option value="Andorra">Andorra</option>
+                          <option value="Angola">Angola</option>
+                          <option value="Argentina">Argentina</option>
+                          <option value="Armenia">Armenia</option>
+                          <option value="Australia">Australia</option>
+                          <option value="Austria">Austria</option>
+                          <option value="Azerbaijan">Azerbaijan</option>
+                          <option value="Bahamas">Bahamas</option>
+                          <option value="Bahrain">Bahrain</option>
+                          <option value="Bangladesh">Bangladesh</option>
+                          <option value="Belarus">Belarus</option>
+                          <option value="Belgium">Belgium</option>
+                          <option value="Belize">Belize</option>
+                          <option value="Benin">Benin</option>
+                          <option value="Bolivia">Bolivia</option>
+                          <option value="Bosnia & Herzegovina">
+                            Bosnia & Herzegovina
+                          </option>
+                          <option value="Botswana">Botswana</option>
+                          <option value="Brazil">Brazil</option>
+                          <option value="Brunei">Brunei</option>
+                          <option value="Bulgaria">Bulgaria</option>
+                          <option value="Burkina Faso">Burkina Faso</option>
+                          <option value="Burundi">Burundi</option>
+                          <option value="Cambodia">Cambodia</option>
+                          <option value="Cameroon">Cameroon</option>
+                          <option value="Canada">Canada</option>
+                          <option value="Chile">Chile</option>
+                          <option value="China">China</option>
+                          <option value="Colombia">Colombia</option>
+                          <option value="Congo">Congo</option>
+                          <option value="Costa Rica">Costa Rica</option>
+                          <option value="Croatia">Croatia</option>
+                          <option value="Cuba">Cuba</option>
+                          <option value="Cyprus">Cyprus</option>
+                          <option value="Czech Republic">Czech Republic</option>
+                          <option value="Denmark">Denmark</option>
+                          <option value="Dominican Republic">
+                            Dominican Republic
+                          </option>
+                          <option value="Ecuador">Ecuador</option>
+                          <option value="Egypt">Egypt</option>
+                          <option value="El Salvador">El Salvador</option>
+                          <option value="Estonia">Estonia</option>
+                          <option value="Ethiopia">Ethiopia</option>
+                          <option value="Finland">Finland</option>
+                          <option value="France">France</option>
+                          <option value="Gabon">Gabon</option>
+                          <option value="Gambia">Gambia</option>
+                          <option value="Georgia">Georgia</option>
+                          <option value="Germany">Germany</option>
+                          <option value="Ghana">Ghana</option>
+                          <option value="Greece">Greece</option>
+                          <option value="Guatemala">Guatemala</option>
+                          <option value="Guinea">Guinea</option>
+                          <option value="Haiti">Haiti</option>
+                          <option value="Honduras">Honduras</option>
+                          <option value="Hong Kong">Hong Kong</option>
+                          <option value="Hungary">Hungary</option>
+                          <option value="Iceland">Iceland</option>
+                          <option value="India">India</option>
+                          <option value="Indonesia">Indonesia</option>
+                          <option value="Iran">Iran</option>
+                          <option value="Iraq">Iraq</option>
+                          <option value="Ireland">Ireland</option>
+                          <option value="Israel">Israel</option>
+                          <option value="Italy">Italy</option>
+                          <option value="Jamaica">Jamaica</option>
+                          <option value="Japan">Japan</option>
+                          <option value="Jordan">Jordan</option>
+                          <option value="Kazakhstan">Kazakhstan</option>
+                          <option value="Kenya">Kenya</option>
+                          <option value="Korea North">Korea North</option>
+                          <option value="Korea South">Korea South</option>
+                          <option value="Kuwait">Kuwait</option>
+                          <option value="Laos">Laos</option>
+                          <option value="Latvia">Latvia</option>
+                          <option value="Lebanon">Lebanon</option>
+                          <option value="Libya">Libya</option>
+                          <option value="Lithuania">Lithuania</option>
+                          <option value="Luxembourg">Luxembourg</option>
+                          <option value="Malaysia">Malaysia</option>
+                          <option value="Mali">Mali</option>
+                          <option value="Malta">Malta</option>
+                          <option value="Mexico">Mexico</option>
+                          <option value="Moldova">Moldova</option>
+                          <option value="Monaco">Monaco</option>
+                          <option value="Mongolia">Mongolia</option>
+                          <option value="Morocco">Morocco</option>
+                          <option value="Mozambique">Mozambique</option>
+                          <option value="Myanmar">Myanmar</option>
+                          <option value="Nepal">Nepal</option>
+                          <option value="Netherlands">Netherlands</option>
+                          <option value="New Zealand">New Zealand</option>
+                          <option value="Nicaragua">Nicaragua</option>
+                          <option value="Niger">Niger</option>
+                          <option value="Nigeria">Nigeria</option>
+                          <option value="Norway">Norway</option>
+                          <option value="Oman">Oman</option>
+                          <option value="Pakistan">Pakistan</option>
+                          <option value="Palestine">Palestine</option>
+                          <option value="Panama">Panama</option>
+                          <option value="Paraguay">Paraguay</option>
+                          <option value="Peru">Peru</option>
+                          <option value="Philippines">Philippines</option>
+                          <option value="Poland">Poland</option>
+                          <option value="Portugal">Portugal</option>
+                          <option value="Qatar">Qatar</option>
+                          <option value="Romania">Romania</option>
+                          <option value="Russia">Russia</option>
+                          <option value="Rwanda">Rwanda</option>
+                          <option value="Saudi Arabia">Saudi Arabia</option>
+                          <option value="Senegal">Senegal</option>
+                          <option value="Singapore">Singapore</option>
+                          <option value="Slovakia">Slovakia</option>
+                          <option value="Somalia">Somalia</option>
+                          <option value="South Africa">South Africa</option>
+                          <option value="Spain">Spain</option>
+                          <option value="Sri Lanka">Sri Lanka</option>
+                          <option value="Sudan">Sudan</option>
+                          <option value="Sweden">Sweden</option>
+                          <option value="Switzerland">Switzerland</option>
+                          <option value="Syria">Syria</option>
+                          <option value="Taiwan">Taiwan</option>
+                          <option value="Tanzania">Tanzania</option>
+                          <option value="Thailand">Thailand</option>
+                          <option value="Togo">Togo</option>
+                          <option value="Trinidad & Tobago">
+                            Trinidad & Tobago
+                          </option>
+                          <option value="Tunisia">Tunisia</option>
+                          <option value="Turkey">Turkey</option>
+                          <option value="Uganda">Uganda</option>
+                          <option value="Ukraine">Ukraine</option>
+                          <option value="United Arab Emirates">
+                            United Arab Emirates
+                          </option>
+                          <option value="United Kingdom">United Kingdom</option>
+                          <option value="United States of America">
+                            United States of America
+                          </option>
+                          <option value="Uruguay">Uruguay</option>
+                          <option value="Uzbekistan">Uzbekistan</option>
+                          <option value="Venezuela">Venezuela</option>
+                          <option value="Vietnam">Vietnam</option>
+                          <option value="Yemen">Yemen</option>
+                          <option value="Zambia">Zambia</option>
+                          <option value="Zimbabwe">Zimbabwe</option>
+                        </select>
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Status</label>
+                        <select class="input-bordered" name="status">
+                          <option>Processing</option>
+                          <option>On Hold</option>
+                          <option>On Transit</option>
+                          <option>Shipped</option>
+                          <option>Arrived</option>
+                        </select>
+                      </div>
+                      <div class="gaps-1x"></div>
+                      <div
+                        class="d-sm-flex justify-content-between align-items-center"
+                      >
+                        <button
+                          type="button"
+                          id="submitBtn"
+                          class="btn btn-primary"
+                        >
+                          Proceed
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <p
+                  id="formMsg"
+                  style="
+                    margin-top: 10px;
+                    display: none;
+                    padding: 10px;
+                    border-radius: 4px;
+                  "
+                ></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Logout
+      document.querySelectorAll("#logoutBtn, #logoutBtn2").forEach((btn) => {
+        btn.addEventListener("click", async function (e) {
+          e.preventDefault();
+          await fetch("/api/admin/auth/logout", {
+            method: "POST",
+            credentials: "include",
+          });
+          window.location.href = "/admin/auth/login.html";
+        });
+      });
+
+      // Submit consignment
+      document
+        .getElementById("submitBtn")
+        .addEventListener("click", async function () {
+          const btn = this;
+          const msg = document.getElementById("formMsg");
+          msg.style.display = "none";
+
+          const form = document.getElementById("consignmentForm");
+          const get = (name) =>
+            form.querySelector(`[name="${name}"]`)?.value || "";
+
+          const payload = {
+            senderName: get("sender-name"),
+            senderPhone: get("sender-phone"),
+            senderCompany: get("sender-company"),
+            senderAddress: get("sender-address"),
+            senderCity: get("sender-city"),
+            senderState: get("sender-state"),
+            senderCountry: get("sender-country"),
+            senderZip: get("sender-zip"),
+            senderEmail: get("sender-email"),
+
+            receiverName: get("receiver-name"),
+            receiverPhone: get("receiver-phone"),
+            receiverCompany: get("receiver-company"),
+            receiverAddress: get("receiver-address"),
+            receiverCity: get("receiver-city"),
+            receiverState: get("receiver-state"),
+            receiverCountry: get("receiver-country"),
+            receiverZip: get("receiver-zip"),
+            receiverEmail: get("receiver-email"),
+
+            productName: get("name"),
+            departure: get("product-departure"),
+            arrival: get("product-arrival"),
+            price: get("price"),
+            description: get("description"),
+            location: get("location"),
+            status: get("status"),
+          };
+
+          btn.disabled = true;
+          btn.textContent = "Saving...";
+
+          try {
+            const res = await fetch("/api/admin/consignments", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include",
+              body: JSON.stringify(payload),
+            });
+
+            const data = await res.json();
+
+            if (data.ok) {
+              window.location.href = "consignments.html";
+            } else {
+              msg.style.color = "red";
+              msg.style.background = "#fff0f0";
+              msg.textContent = data.message || "Failed. Try again.";
+              msg.style.display = "block";
+            }
+          } catch (err) {
+            msg.style.color = "red";
+            msg.style.background = "#fff0f0";
+            msg.textContent = "Network error. Please try again.";
+            msg.style.display = "block";
+          } finally {
+            btn.disabled = false;
+            btn.textContent = "Proceed";
+          }
+        });
+    </script>
+
+    <script src="/admin-script/checkAuth.js"></script>
+    
+  </body>
+</html>

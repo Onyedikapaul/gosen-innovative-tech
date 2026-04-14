@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html>
+    
+<head>
+        <title>Gosen Innovative Technology </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap Css -->
+        <link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap-3.3.6/css/bootstrap.min.css">        
+        <!-- Bootstrap Select Css -->
+        <link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css">
+        <!-- Fonts Css -->
+        <link rel="stylesheet" type="text/css" href="/assets/plugins/font-awesome-4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/assets/plugins/font-elegant/elegant.css">
+        <!-- OwlCarousel2 Slider Css -->
+        <link rel="stylesheet" type="text/css" href="/assets/plugins/owl.carousel.2/assets/owl.carousel.css">
+
+
+        <!-- Animate Css -->       
+        <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+
+        <!-- Main Css -->
+        <link rel="stylesheet" type="text/css" href="/assets/css/theme.css">
+
+<!-- GetButton.io widget -->
+<script type='text/javascript'>
+    (function () {
+        var options = {
+            whatsapp: '', // WhatsApp number
+            call_to_action: 'Message us', // Call to action
+            button_color: '#FF6550', // Color of button
+            position: 'left', // Position may be 'right' or 'left'
+        };
+        var proto = 'https:', host = 'getbutton.io', url = proto + '//static.' + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>
+
+    </head>
+    <body id="home">
+        <!-- Preloader -->
+        <div id="preloader">
+
+            <div class="small1">
+                <div class="small ball smallball1"></div>
+                <div class="small ball smallball2"></div>
+                <div class="small ball smallball3"></div>
+                <div class="small ball smallball4"></div>
+            </div>
+
+
+            <div class="small2">
+                <div class="small ball smallball5"></div>
+                <div class="small ball smallball6"></div>
+                <div class="small ball smallball7"></div>
+                <div class="small ball smallball8"></div>
+            </div>
+
+            <div class="bigcon">
+                <div class="big ball"></div>
+            </div>
+
+        </div>	
+        <!-- /.Preloader -->	
+
+
+        <!-- Main Wrapper -->        
+        <main class="wrapper">
+
+            <!-- Header -->
+            <header class="header-main">
+
+
+                <!-- Header Logo & Navigation -->
+                <nav class="menu-bar font2-title1">
+                    <div class="theme-container container">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-logo" href="#"> <img src="assets/img/logo/logo-black.png" alt="logo" style="height:50px;" /> </a>
+                            </div>
+                            <div class="col-md-10 col-sm-10 fs-12">
+                                <div id="navbar" class="collapse navbar-collapse no-pad">
+                                    <ul class="navbar-nav theme-menu">
+                                        <li> <a href="index.html">home</a> </li>
+                                        <li> <a href="about-us.html">about</a> </li>
+                                        <li> <a href="tracking.html"> tracking </a> </li>
+                                        <li class="dropdown">
+                                        </li>
+                                    </ul>                                                      
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- /.Header Logo & Navigation -->
+
+            </header>
+            <!-- /.Header -->
+
+            <!-- Content Wrapper -->
+            <article> 
+                <!-- Banner -->
+                <section class="banner mask-overlay pad-120 white-clr">
+                    <div class="container theme-container rel-div">
+                        <img class="pt-10 effect animated fadeInLeft" alt="" src="assets/img/icons/icon-1.png" />
+                        <ul class="list-items fw-600 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s">   
+                            <li><a href="#">fast</a></li>
+                            <li><a href="#">secured</a></li>
+                            <li><a href="#">worldwide</a></li>
+                        </ul>
+                        <h2 class="section-title fs-48 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s"> Professional<br> <span class="theme-clr"> Courier </span> & <span class="theme-clr"> Delivery </span> Services </h2>
+                    </div>
+                    <div class="pad-50 visible-lg"></div>
+                </section>
+                <!-- /.Banner -->
+
+                <!-- Track Product -->
+                <section>
+                    <div class="theme-container container">               
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 track-prod clrbg-before wow slideInUp" data-wow-offset="50" data-wow-delay=".20s">     
+                                <h2 class="title-1"> track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
+                                <div class="row">
+                                  <div class="col-md-7 col-sm-7">
+  <div class="form-group">
+    <input type="text" id="homeTrackingInput" placeholder="Enter your product ID" class="form-control box-shadow">
+  </div>
+</div>
+<div class="col-md-5 col-sm-5">
+  <div class="form-group">
+    <button class="btn-1" id="homeTrackBtn">track your product</button>
+  </div>
+</div>
+
+<script>
+  function goToTracking() {
+    const code = document.getElementById('homeTrackingInput').value.trim();
+    if (!code) return;
+    window.location.href = '/tracking.html?t=' + encodeURIComponent(code);
+  }
+
+  document.getElementById('homeTrackBtn').addEventListener('click', goToTracking);
+
+  document.getElementById('homeTrackingInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') goToTracking();
+  });
+</script>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                </section>
+                <!-- /.Track Product -->
+
+                <!-- About Us -->
+                <section class="pad-80 about-wrap clrbg-before">
+                    <span class="bg-text wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s"> About </span>
+                    <div class="theme-container container">               
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="about-us">
+                                    <h2 class="section-title pb-10 wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s"> About Us </h2>
+                                    <p class="fs-16 wow fadeInUp" data-wow-offset="50" data-wow-delay=".25s">We have always been revolutionizing, shaping, and simplifying the world of logistics. From inventing the international air express industry to becoming the world’s leading logistics company; we’re thinkers, makers and pioneers that constantly challenge what’s possible. And now we’re tackling the ultimate border: delivering to the moon..</p>
+                                    <ul class="feature">
+                                        <li> 
+                                            <img alt="" src="assets/img/icons/icon-2.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" /> 
+                                            <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s"> 
+                                                <h2 class="title-1">Global Service</h2> 
+                                                <p>We provide an integrated network of road, rail and sea transportation resources which stretches across the globe</p>                                            
+                                            </div>  
+                                        </li>
+                                        <li> 
+                                            <img alt="" src="assets/img/icons/icon-3.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" /> 
+                                            <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s"> 
+                                                <h2 class="title-1">24/7 Support</h2> 
+                                                <p>We offer a 24/7 round the clock support and customer care system that ensures all your enquiries are promptly resolved</p>                                            
+                                            </div>  
+                                        </li>
+                                        <li> 
+                                            <img alt="" src="assets/img/icons/icon-4.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" /> 
+                                            <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s"> 
+                                                <h2 class="title-1">Parcel Tracking</h2> 
+                                                <p>As soon as your parcel is dispatched, we have an integrated and automated system that enables you track your shipment from anywhere in the world</p>                                            
+                                            </div>  
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <div class="pb-80 visible-lg"></div>
+                                <img alt="" src="assets/img/block/about-img.png" class="wow slideInRight" data-wow-offset="50" data-wow-delay=".20s" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- /.About Us -->
+
+               
+                <!-- Steps -->
+                <section class="steps-wrap mask-overlay pad-80">                
+                    <div class="theme-container container">               
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="font-2 fs-50 wow fadeInLeft" data-wow-offset="50" data-wow-delay=".20s"> 1. </div> 
+                                <div class="steps-content wow fadeInLeft" data-wow-offset="50" data-wow-delay=".25s"> 
+                                    <h2 class="title-3">Order</h2>                                           
+                                </div>  
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="font-2 fs-50 wow fadeInLeft" data-wow-offset="50" data-wow-delay=".20s"> 2. </div> 
+                                <div class="steps-content wow fadeInLeft" data-wow-offset="50" data-wow-delay=".25s"> 
+                                    <h2 class="title-3">Wait</h2>                                            
+                                </div>  
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="font-2 fs-50 wow fadeInLeft" data-wow-offset="50" data-wow-delay=".20s"> 3. </div> 
+                                <div class="steps-content wow fadeInLeft" data-wow-offset="50" data-wow-delay=".25s"> 
+                                    <h2 class="title-3">Deliver</h2>                                            
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-img wow slideInRight" data-wow-offset="50" data-wow-delay=".20s"> <img src="assets/img/block/step-img.png" alt="" /> </div>
+                </section>
+                <!-- /.Steps -->
+
+                <!-- Product Delivery -->
+                <section class="prod-delivery pad-120">
+                    <div class="theme-container container">               
+                        <div class="row">
+                            <div class="col-md-11 col-md-offset-1">
+                                <div class="pt-120 rel-div">
+                                    <div class="pb-50 hidden-xs"></div>
+                                    <h2 class="section-title wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s"> Get the <span class="theme-clr"> fastest </span> product delivery </h2>
+                                    <p class="fs-16 wow fadeInUp" data-wow-offset="50" data-wow-delay=".25s">We offer a host of logistic management services and supply chain solutions. <br>We focus on eliminating barriers and ensuring that we deliver packages to the far ends<br> of the globe through our automated and integrated delivery solutions</p>
+                                    <div class="pb-120 hidden-xs"></div>
+                                </div>
+                                <div class="delivery-img pt-10">
+                                    <img alt="" src="assets/img/block/delivery.png" class="wow slideInLeft" data-wow-offset="50" data-wow-delay=".20s"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- /.Product Delivery -->
+
+                <!-- Testimonial -->
+                <section class="testimonial mask-overlay">
+                    <div class="theme-container container">               
+                        <div class="testimonial-slider no-pagination pad-120">
+                            <div class="item">
+                                <div class="testimonial-img darkclr-border theme-clr font-2 wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s">
+                                    <img alt="" src="assets/img/block/testimonial-1.png" />
+                                    <span>,,</span>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".25s">  <i class="gray-clr fs-16">
+                                            
+
+I would like to thank Gosen Innovative Technology  and your moving crew for the service rendered last week. <br>They were very professional and courteous and certainly made the moving process easier
+                                        </i> </p>
+                                    <h2 class="title-2 pt-10 wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s"> <a href="#" class="white-clr fw-900"> Bushra Ahsani </a> </h2>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-img darkclr-border theme-clr font-2">
+                                    <img alt="" src="assets/img/block/testimonial-1.png" />
+                                    <span>,,</span>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>  <i class="gray-clr fs-16">
+                                            Knowledgeable sales representation and optimal services. <br>Post flight follow-up and good customer service.
+                                        </i> </p>
+                                    <h2 class="title-2 pt-10"> <a href="#" class="white-clr fw-900"> Bushra Ahsani </a> </h2>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-img darkclr-border theme-clr font-2">
+                                    <img alt="" src="assets/img/block/testimonial-1.png" />
+                                    <span>,,</span>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>  <i class="gray-clr fs-16">
+                                            Gosen Innovative Technology  Company has been amazing for the growth of our business from start to finish.<br> They walk us through all our shipping options with clarity and 100% transparency. <br>Customer service and availability is superb.
+                                        </i> </p>
+                                    <h2 class="title-2 pt-10"> <a href="#" class="white-clr fw-900"> Bushra Ahsani </a> </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- /.Testimonial -->
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="bg.jpg" width="100%" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Contact us -->
+                <section class="contact-wrap pad-120">   
+                    <span class="bg-text wow fadeInLeft" data-wow-offset="50" data-wow-delay=".20s"> Contact </span>
+                    <div class="theme-container container">               
+                        <div class="row">
+                            <div class="col-md-6 col-sm-8">
+                                <div class="title-wrap">
+                                    <h2 class="section-title wow fadeInLeft" data-wow-offset="50" data-wow-delay=".20s">contact us</h2>
+                                    <p class="wow fadeInLeft" data-wow-offset="50" data-wow-delay=".20s" >Get in touch with us easiky</p>
+                                </div>
+                                <ul class="contact-detail title-2">
+                                    <!--<li class="wow slideInUp" data-wow-offset="50" data-wow-delay=".25s"> <span>usa numbers:</span> <p class="gray-clr"> +001-2463-957 <br> +001-4356-643 </p> </li>-->
+                                    <li class="wow slideInUp" data-wow-offset="50" data-wow-delay=".30s"> <span>Email address:</span> <p class="gray-clr">  info@sepangarexpresss.com </p> </li>
+                                </ul>
+                            </div>                        
+                        </div>
+                    </div>               
+                </section>
+                <!-- /.Contact us -->
+            </article>
+            <!-- /.Content Wrapper -->
+
+            <!-- Footer -->
+            <footer>
+                <div class="footer-main pad-120 white-clr">
+                    <div class="theme-container container">               
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 footer-widget">
+                                <a href="#"> <img class="logo" alt="#" src="assets/img/logo/logo-white.png" />  </a>
+                            </div>
+                            <div class="col-md-3 col-sm-6 footer-widget">
+                                <h2 class="title-1 fw-900">quick links</h2>
+                                <ul>
+                                    <li> <a href="index.html">Home</a> </li>
+                                    <li> <a href="about.html">About</a> </li>
+                                    <li> <a href="tracking.html">Tracking</a> </li>
+                                    <li> <a href="#">support</a> </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 col-sm-6 footer-widget">
+                                <li> <a href="#">Carboxymethyl Cellulose ( CMC)</a> </li>
+                                <li> <a href="#">Sodium Gluconate </a> </li>
+                                <li> <a href="#">Cerium Elements </a> </li>
+                                <li> <a href="#">Polycarboxylate Superplasticizer </a> </li>
+                                <li> <a href="#">Sodium lignosulfonate</a> </li>
+                                <li> <a href="#">Sodium naphthalene sulfonate</a> </li>
+                            </div>
+                            <div class="col-md-3 col-sm-6 footer-widget">
+                                <h2 class="title-1 fw-900">get in touch</h2>
+                                <ul class="social-icons list-inline">
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".20s"> <a href="#" class="fa fa-facebook"></a> </li>
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".25s"> <a href="#" class="fa fa-twitter"></a> </li>
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".30s"> <a href="#" class="fa fa-google-plus"></a> </li>
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".35s"> <a href="#" class="fa fa-linkedin"></a> </li>
+                                </ul>
+                                <ul class="payment-icons list-inline">
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".20s"> <a href="#"> <img alt="#" src="assets/img/icons/payment-1.png" /> </a> </li>
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".25s"> <a href="#"> <img alt="#" src="assets/img/icons/payment-2.png" /> </a> </li>
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".30s"> <a href="#"> <img alt="#" src="assets/img/icons/payment-3.png" /> </a> </li>
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".35s"> <a href="#"> <img alt="#" src="assets/img/icons/payment-4.png" /> </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="theme-container container">               
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <p> © Copyright 2016, All rights reserved </p>                            
+                            </div>
+                            <div class="col-md-6 col-sm-6 text-right">
+                <p>Gosen Innovative Technology </p>
+              </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- /.Footer -->
+
+
+        </main>
+        <!-- / Main Wrapper -->
+
+        <!-- Top -->
+        <div class="to-top theme-clr-bg transition"> <i class="fa fa-angle-up"></i> </div>
+
+
+        <!-- Main Jquery JS -->
+        <script src="/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>        
+        <!-- Bootstrap JS -->
+        <script src="/assets/plugins/bootstrap-3.3.6/js/bootstrap.min.js" type="text/javascript"></script>    
+        <!-- Bootstrap Select JS -->
+        <script src="/assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js" type="text/javascript"></script>    
+        <!-- OwlCarousel2 Slider JS -->
+        <script src="/assets/plugins/owl.carousel.2/owl.carousel.min.js" type="text/javascript"></script>   
+        <!-- Sticky Header -->
+        <script src="/assets/js/jquery.sticky.js"></script>
+        <!-- Wow JS -->
+        <script src="/assets/plugins/WOW-master/dist/wow.min.js" type="text/javascript"></script>
+        <!-- Data binder -->
+        <script src="/assets/plugins/data.binder.js/data.binder.js" type="text/javascript"></script>
+
+        <!-- Slider JS -->        
+
+
+        <!-- Theme JS -->
+        <script src="/assets/js/theme.js" type="text/javascript"></script>
+
+    </body>
+
+</html>

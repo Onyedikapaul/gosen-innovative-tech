@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GOSEN INNOVATIVE TECHNOLOGY  - Receipt</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+
+  <style>
+    .invoice-wrapper {
+      margin: 20px auto;
+      max-width: 700px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    .invoice-top {
+      background-color: #fafafa;
+      padding: 40px 60px;
+    }
+    .invoice-top-left { margin-top: 60px; }
+    .invoice-top-left h2, .invoice-top-left h6 {
+      line-height: 1.5;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .invoice-top-left h4 {
+      margin-top: 30px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .invoice-top-left h5 {
+      line-height: 1.4;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+    }
+    .client-company-name {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    .client-address {
+      font-size: 14px;
+      margin-top: 5px;
+      color: rgba(0,0,0,0.75);
+    }
+    .invoice-top-right h2, .invoice-top-right h6 {
+      text-align: right;
+      line-height: 1.5;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .invoice-top-right h5 {
+      line-height: 1.4;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      text-align: right;
+      margin-top: 0;
+    }
+    .our-company-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    .our-address {
+      font-size: 13px;
+      margin-top: 0;
+      color: rgba(0,0,0,0.75);
+    }
+    .logo-wrapper { overflow: auto; }
+    .invoice-bottom {
+      background-color: #ffffff;
+      padding: 40px 60px;
+      position: relative;
+    }
+    .title {
+      font-size: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .invoice-bottom-left h5, .invoice-bottom-left h4 {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .invoice-bottom-left h4 { font-weight: 400; }
+    .terms {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    .divider {
+      margin-top: 50px;
+      margin-bottom: 5px;
+    }
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 26px;
+      background-color: #323149;
+    }
+    .print-btn {
+      display: block;
+      text-align: center;
+      margin: 20px auto;
+    }
+    @media print {
+      .print-btn { display: none; }
+      .back-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="print-btn">
+    <button onclick="window.print()" class="btn btn-primary">
+      <span class="glyphicon glyphicon-print"></span> Print Receipt
+    </button>
+    <a href="receipts.html" class="btn btn-default back-btn" style="margin-left:10px;">« Back</a>
+  </div>
+
+  <section class="back">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="invoice-wrapper">
+
+            <!-- TOP: Logo + Company -->
+            <div class="invoice-top">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="invoice-top-right">
+                    <img src="/admin/dashboard/assets/images/logo-1.png" class="img-fluid" style="width:100%" />
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="invoice-top-right">
+                    <h2 class="our-company-name">Gosen Innovative Technology</h2>
+                    <h6 class="our-address"> No 66, Kampung traditional keda kedag, Jln Sungai Tiang, 06750 Pendang, kedah, Malaysia</h6>
+                    <h5>admin@gosen-innovative-technology.pro</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MIDDLE: Payer Info + Receipt No -->
+            <div class="invoice-top" style="background: #0a4649; color:#f8f8f8">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="invoice-top-left">
+                    <h2 class="our-company-name">PAID BY:</h2>
+                    <h5 class="our-address" style="color:#f8f8f8">
+                      <b>Name: </b><span id="p-payer-name"></span>
+                    </h5>
+                  <h5 class="our-address" style="color:#f8f8f8">
+  <b>Address: </b><span id="p-payer-address"></span>
+</h5>
+<h5 style="color:#f8f8f8">
+  <b>Zip Code: </b><span id="p-payer-zip"></span>
+</h5>
+                    <h5 style="color:#f8f8f8">
+                      <b>Phone Number: </b><span id="p-payer-phone"></span>
+                    </h5>
+                    <h5 style="color:#f8f8f8">
+                      <b>Email: </b><span id="p-payer-email"></span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="invoice-top-left">
+                    <h5 class="our-address" style="color:#f8f8f8">
+                      <b>Receipt No: </b><span id="p-receipt-number"></span>
+                    </h5>
+                    <h6 class="our-address" style="color:#f8f8f8">
+                      <b>Date: </b><span id="p-date"></span>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BOTTOM: Table + Agent -->
+            <div class="invoice-bottom">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h2 class="title">Receipt</h2>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-offset-1 col-md-12 col-sm-12">
+                  <div class="invoice-bottom-right">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Description</th>
+                          <th>Price</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td id="p-description"></td>
+                          <td id="p-price"></td>
+                        </tr>
+                        <tr style="height: 40px;"></tr>
+                      </tbody>
+                      <thead>
+                        <tr>
+                          <th>Total</th>
+                          <th></th>
+                          <th id="p-total"></th>
+                        </tr>
+                      </thead>
+                    </table>
+                    <ul>
+                      <li>For more information on this package contact our agent</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-xs-12">
+                  <hr class="divider">
+                </div>
+
+                <div class="col-sm-6">
+                  <img src="/admin/dashboard/assets/images/images.png" />
+                </div>
+                <div class="col-sm-6 text-right">
+                  <img src="/admin/dashboard/assets/images/hj.png" width="45%" />
+                  <h5 class="our-address">
+                    <b>Agent Name: </b><span id="p-agent-name"></span>
+                  </h5>
+                  <h5 class="our-address">
+                    <b>Agent Phone Number: </b><span id="p-agent-phone"></span>
+                  </h5>
+                </div>
+              </div>
+              <div class="bottom-bar"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+  async function loadReceipt() {
+    const params = new URLSearchParams(window.location.search);
+    const receiptNumber = params.get('t');
+    if (!receiptNumber) return;
+
+    try {
+      const res = await fetch(`/api/admin/receipts/${receiptNumber}`, {
+        credentials: 'include',
+      });
+      const data = await res.json();
+      if (!data.ok) return;
+
+      const r = data.receipt;
+
+      // Payer
+      document.getElementById('p-payer-name').textContent = r.payer?.name || '';
+      document.getElementById('p-payer-zip').textContent = r.payer?.zip || '';
+      document.getElementById('p-payer-phone').textContent = r.payer?.phone || '';
+      document.getElementById('p-payer-email').textContent = r.payer?.email || '';
+
+      // Build address cleanly — no stray commas when fields are empty
+      const addressParts = [
+        r.payer?.address,
+        r.payer?.city,
+        r.payer?.state,
+        r.payer?.country,
+      ].filter(Boolean).join(', ');
+      document.getElementById('p-payer-address').textContent = addressParts || '';
+
+      // Receipt info
+      document.getElementById('p-receipt-number').textContent = r.receiptNumber;
+      document.getElementById('p-date').textContent = r.date
+        ? new Date(r.date).toLocaleDateString()
+        : '';
+
+      // Product
+      document.getElementById('p-description').textContent = r.description || '';
+      document.getElementById('p-price').textContent = r.price || '';
+      document.getElementById('p-total').textContent = r.price || '';
+
+      // Agent
+      document.getElementById('p-agent-name').textContent = r.agent?.name || '';
+      document.getElementById('p-agent-phone').textContent = r.agent?.phone || '';
+
+    } catch (err) {
+      console.error('Failed to load receipt:', err);
+    }
+  }
+
+  loadReceipt();
+</script>
+
+  <script src="/admin-script/checkAuth.js"></script>
+
+</body>
+</html>

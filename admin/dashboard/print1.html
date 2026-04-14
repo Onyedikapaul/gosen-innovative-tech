@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>GOSEN INNOVATIVE TECHNOLOGY  - Invoice</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+
+    <style>
+      .line {
+        border-bottom: 3px solid #000;
+        width: 100%;
+      }
+      .line-light {
+        width: 100%;
+        border-bottom: 1px solid #949597;
+      }
+      .line-end {
+        width: 100%;
+        border-bottom: 3px solid #f0c29e;
+      }
+      .data {
+        background-color: #dcdddf;
+        padding-left: 45px;
+      }
+      .data .data-box {
+        margin-top: 60px;
+      }
+      .data .data-box .data-separator {
+        border-top: 1px solid #949597;
+        width: 10%;
+      }
+      .content {
+        background-color: #f1f1f1;
+        padding-right: 45px;
+      }
+      .without-margin {
+        margin: 0 !important;
+      }
+      .page {
+        page-break-after: always;
+        page-break-inside: avoid;
+      }
+      .print-btn {
+        text-align: center;
+        padding: 15px;
+      }
+      @media print {
+        .print-btn {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="print-btn">
+      <button onclick="window.print()" class="btn btn-primary btn-sm">
+        🖨 Print
+      </button>
+      <a
+        href="consignments.html"
+        class="btn btn-secondary btn-sm"
+        style="margin-left: 8px"
+        >« Back</a
+      >
+    </div>
+
+    <div id="app" class="container invoice">
+      <div class="row">
+        <!-- LEFT: data -->
+        <div class="col-4 data py-4">
+          <div class="line mt-4 mb-4"></div>
+          <center>
+            <img src="/admin/dashboard/assets/images/logo-1.png" height="40" />
+            <img src="/admin/dashboard/assets/images/dec.png" height="40" />
+          </center>
+
+          <div class="data-box">
+            <div class="data-separator d-block my-2"></div>
+            <h4 class="text-muted font-weight-light">No.</h4>
+            <h4 class="font-weight-bold" id="p-tracking"></h4>
+          </div>
+
+          <div class="data-box">
+            <div class="data-separator d-block my-2"></div>
+            <h4 class="text-muted font-weight-light">INVOICE DATE</h4>
+            <h4 class="font-weight-bold" id="p-departure"></h4>
+          </div>
+
+          <div class="data-box">
+            <div class="data-separator d-block my-2"></div>
+            <h4 class="text-muted font-weight-light">DUE DATE</h4>
+            <h4 class="font-weight-bold" id="p-arrival"></h4>
+          </div>
+
+          <br /><br />
+
+          <div class="data-box">
+            <h6>
+              WEBSITE:
+              <span class="font-weight-light">https://gosen-innovative-technology.pro</span>
+            </h6>
+            <h6>
+              EMAIL:
+              <span class="font-weight-light">admin@gosen-innovative-technology.pro</span>
+            </h6>
+            <h6>PHONE: <span class="font-weight-light">+60146836108</span></h6>
+            <h6>
+              ADDRESS:
+              <span class="font-weight-light"
+                >No 66, Kampung traditional keda kedag, Jln Sungai Tiang, 06750 Pendang, kedah, Malaysia</span
+              >
+            </h6>
+            <img src="/admin/dashboard/assets/images/qr.png" alt="" class="img-fluid" />
+            <center style="font-family: monospace" id="p-tracking2"></center>
+          </div>
+        </div>
+        <!-- end LEFT -->
+
+        <!-- RIGHT: content -->
+        <div class="col-8 content py-4">
+          <div class="line mt-4 mb-4"></div>
+
+          <!-- header: sender + receiver -->
+          <div class="header">
+            <div class="row">
+              <div class="col-6 from">
+                <span class="d-block font-weight-light">SENDER:</span>
+                <h4 id="p-sender-name"></h4>
+                <span
+                  class="d-block font-weight-light"
+                  id="p-sender-address"
+                ></span>
+                <span
+                  class="d-block font-weight-light"
+                  id="p-sender-zip"
+                ></span>
+                <span
+                  class="d-block font-weight-light"
+                  id="p-sender-phone"
+                ></span>
+                <span
+                  class="d-block font-weight-light"
+                  id="p-sender-email"
+                ></span>
+              </div>
+              <div class="col-6 to">
+                <span class="d-block font-weight-light">RECEIVER:</span>
+                <h4 id="p-receiver-name"></h4>
+                <span
+                  class="d-block font-weight-light"
+                  id="p-receiver-address"
+                ></span>
+                <span
+                  class="d-block font-weight-light"
+                  id="p-receiver-zip"
+                ></span>
+                <span
+                  class="d-block font-weight-light"
+                  id="p-receiver-phone"
+                ></span>
+                <span
+                  class="d-block font-weight-light"
+                  id="p-receiver-email"
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- note -->
+          <div class="row my-4">
+            <div class="col-12">
+              <small class="text-justify"
+                >This is to certify that GOSEN INNOVATIVE TECHNOLOGY  Delivery has
+                collected the consignment described below from the "Sender" and
+                has accepted to deliver it to the "receiver" to the address
+                given by the consigner. This parcel is carried under GOSEN INNOVATIVE TECHNOLOGY Delivery. This agreement herein is valid,
+                correct and binding on the parties. Alteration on this Airway
+                Bill of GOSEN INNOVATIVE TECHNOLOGY  after it has been duly issued
+                and accepted renders this parcel valueless, null and
+                void.</small
+              >
+            </div>
+          </div>
+
+          <!-- items header -->
+          <div class="items-header">
+            <div class="row mt-4 font-weight-bold">
+              <div class="col-12 my-2"><div class="line"></div></div>
+              <div class="col-6">DESCRIPTION</div>
+              <div class="col-2 text-center">LOCATION</div>
+              <div class="col-2 text-center">STATUS</div>
+              <div class="col-2 text-center">PRICE</div>
+              <div class="col-12 my-2"><div class="line"></div></div>
+            </div>
+          </div>
+
+          <!-- items -->
+          <div class="items">
+            <div class="row mt-2">
+              <div class="col-6">
+                <p class="without-margin" id="p-description"></p>
+              </div>
+              <div class="col-2 text-center" id="p-location"></div>
+              <div class="col-2 text-center" id="p-status"></div>
+              <div class="col-2 text-right" id="p-price"></div>
+            </div>
+            <div class="row">
+              <div class="col-12 my-2"><div class="line-light"></div></div>
+            </div>
+          </div>
+
+          <!-- values -->
+          <div class="values">
+            <div class="row">
+              <div class="col-12 my-2"><div class="line"></div></div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-10 font-weight-bold">SUBTOTAL</div>
+              <div
+                class="col-2 text-right font-weight-bold"
+                id="p-subtotal"
+              ></div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-10">Taxes 19%</div>
+              <div class="col-2 text-right" id="p-tax"></div>
+              <div class="col-12 my-2"><div class="line-end"></div></div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-9"><h3 class="font-weight-bold">TOTAL</h3></div>
+              <div class="col-3 text-right">
+                <h3 class="font-weight-bold" id="p-total"></h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- signature -->
+          <div class="signature my-4">
+            <div class="row">
+              <div class="col-4 offset-2 text-left">
+                <img src="/admin/dashboard/assets/images/approved.png" alt="" class="img-fluid" />
+              </div>
+              <div class="col-4 offset-2 text-right">
+                <img src="/admin/dashboard/assets/images/hj.png" alt="" class="img-fluid" />
+              </div>
+              <div class="col-12 text-right">
+                <h4 class="font-weight-bold">Gosen Agent</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- gratitude -->
+          <div class="gratitude text-center my-4">
+            <p class="text-muted">
+              If you have any question about this invoice, please contact
+               GOSEN INNOVATIVE TECHNOLOGY Support via email
+              admin@gosen-innovative-technology.pro, or to the mobile phone +60146836108.
+            </p>
+            <h2>Thank you</h2>
+          </div>
+        </div>
+        <!-- end RIGHT -->
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+      async function loadPrint() {
+        const params = new URLSearchParams(window.location.search);
+        const trackingNumber = params.get("t");
+        if (!trackingNumber) return;
+
+        try {
+          const res = await fetch(`/api/consignments/track/${trackingNumber}`);
+          const data = await res.json();
+          if (!data.ok) return;
+
+          const c = data.consignment;
+
+          // Tracking
+          document.getElementById("p-tracking").textContent = c.trackingNumber;
+          document.getElementById("p-tracking2").textContent = c.trackingNumber;
+
+          // Dates
+          document.getElementById("p-departure").textContent = c.departure
+            ? new Date(c.departure).toLocaleDateString()
+            : "";
+          document.getElementById("p-arrival").textContent = c.arrival
+            ? new Date(c.arrival).toLocaleDateString()
+            : "";
+
+          // Sender
+          document.getElementById("p-sender-name").textContent =
+            c.sender?.name || "";
+          const senderAddr = [
+            c.sender?.address,
+            c.sender?.city,
+            c.sender?.state,
+            c.sender?.country,
+          ]
+            .filter(Boolean)
+            .join(", ");
+          document.getElementById("p-sender-address").textContent = senderAddr;
+          document.getElementById("p-sender-zip").textContent =
+            c.sender?.zip || "";
+          document.getElementById("p-sender-phone").textContent =
+            c.sender?.phone || "";
+          document.getElementById("p-sender-email").textContent =
+            c.sender?.email || "";
+
+          // Receiver
+          document.getElementById("p-receiver-name").textContent =
+            c.receiver?.name || "";
+          const receiverAddr = [
+            c.receiver?.address,
+            c.receiver?.city,
+            c.receiver?.state,
+            c.receiver?.country,
+          ]
+            .filter(Boolean)
+            .join(", ");
+          document.getElementById("p-receiver-address").textContent =
+            receiverAddr;
+          document.getElementById("p-receiver-zip").textContent =
+            c.receiver?.zip || "";
+          document.getElementById("p-receiver-phone").textContent =
+            c.receiver?.phone || "";
+          document.getElementById("p-receiver-email").textContent =
+            c.receiver?.email || "";
+
+          // Product
+          document.getElementById("p-description").textContent =
+            c.description || "";
+          document.getElementById("p-location").textContent = c.location || "";
+          document.getElementById("p-status").textContent = c.status || "";
+
+          // Price calculations
+          const rawPrice =
+            parseFloat(String(c.price).replace(/[^0-9.]/g, "")) || 0;
+          const tax = rawPrice * 0.19;
+          const total = rawPrice + tax;
+
+          document.getElementById("p-price").textContent = rawPrice.toFixed(2);
+          document.getElementById("p-subtotal").textContent =
+            rawPrice.toFixed(2);
+          document.getElementById("p-tax").textContent = tax.toFixed(2);
+          document.getElementById("p-total").textContent = total.toFixed(2);
+        } catch (err) {
+          console.error("Failed to load consignment:", err);
+        }
+      }
+
+      loadPrint();
+    </script>
+  </body>
+</html>

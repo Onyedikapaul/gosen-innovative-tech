@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zxx" class="js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="#" />
+    <title>Add Receipt - GOSEN INNOVATIVE TECHNOLOGY </title>
+    <link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=101" />
+    <link rel="stylesheet" href="assets/css/style.css?ver=101" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </head>
+
+  <body class="user-dashboard">
+    <div class="topbar" style="padding-top: 15px; padding-bottom: 15px">
+      <div class="topbar-md d-lg-none">
+        <div class="container">
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="#" class="toggle-nav">
+              <div class="toggle-icon">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+              </div>
+            </a>
+            <div class="site-logo"><a href="../" class="site-brand"></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="d-lg-flex align-items-center justify-content-between">
+          <div class="topbar-lg d-none d-lg-block">
+            <div class="site-logo"><a href="../" class="site-brand"></a></div>
+          </div>
+          <div class="topbar-action d-none d-lg-block">
+            <ul class="topbar-action-list">
+              <li class="dropdown topbar-action-item topbar-action-language">
+                <a href="#" data-toggle="dropdown">EN <i class="fas fa-chevron-down"></i></a>
+              </li>
+              <li class="dropdown topbar-action-item topbar-action-user">
+                <a href="#" data-toggle="dropdown">
+                  <img class="icon" src="assets/images/user-thumb-sm.png" alt="thumb" />
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="user-dropdown">
+                    <div class="user-dropdown-head">
+                      <h6 class="user-dropdown-name">Admin</h6>
+                    </div>
+                    <ul class="user-dropdown-links">
+                      <li><a href="account.html"><i class="fa fa-id-badge"></i> My Profile</a></li>
+                      <li><a href="security.html"><i class="fa fa-lock"></i> Security</a></li>
+                    </ul>
+                    <ul class="user-dropdown-links">
+                      <li><a href="#" id="logoutBtn"><i class="fa fa-power-off"></i> Logout</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-wraper">
+      <div class="container">
+        <div class="d-flex">
+          <div class="user-sidebar">
+            <div class="user-sidebar-overlay"></div>
+            <ul class="user-icon-nav">
+              <li><a href="consignments.html"><i class="fa fa-truck"></i> Consignments</a></li>
+              <li><a href="add-consignment.html"><i class="fa fa-pen"></i> Add Consignment</a></li>
+              <li><a href="receipts.html"><i class="fa fa-file-alt"></i> Receipts</a></li>
+              <li><a href="add-receipt.html"><i class="fa fa-pen"></i> Add Receipt</a></li>
+              <!-- <li><a href="site-details.html"><i class="fa fa-chart-pie"></i> Site Details</a></li>
+              <li><a href="account.html"><i class="fa fa-user"></i> Account</a></li>
+              <li><a href="security.html"><i class="fa fa-lock"></i> Security</a></li> -->
+              <li><a href="#" id="logoutBtn2"><i class="fa fa-power-off"></i> Logout</a></li>
+            </ul>
+          </div>
+
+          <div class="user-content">
+            <div class="user-panel">
+              <div class="">
+                <h2>Add New Receipt</h2>
+
+                <p id="formMsg" style="margin-top:10px; display:none; padding:10px; border-radius:4px;"></p>
+
+                <form id="receiptForm">
+                  <div class="row">
+
+                    <!-- PAYER -->
+                    <div class="col-md-12">
+                      <h4>Payer Information</h4>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Payer Name</label>
+                        <input class="input-bordered" type="text" name="payer-name" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Payer Phone</label>
+                        <input class="input-bordered" type="text" name="payer-phone" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Payer Address</label>
+                        <input class="input-bordered" type="text" name="payer-address" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Payer City</label>
+                        <input class="input-bordered" type="text" name="payer-city" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Payer State/Province</label>
+                        <input class="input-bordered" type="text" name="payer-state" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Payer Country</label>
+                        <input class="input-bordered" type="text" name="payer-country" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Payer Zip Code</label>
+                        <input class="input-bordered" type="text" name="payer-zip" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Payer Email</label>
+                        <input class="input-bordered" type="email" name="payer-email" />
+                      </div>
+                    </div>
+
+                    <!-- PRODUCT -->
+                    <div class="col-md-12">
+                      <h4>Product Information</h4>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Product Name</label>
+                        <input class="input-bordered" type="text" name="name" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Date</label>
+                        <input class="input-bordered" type="date" name="date" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Price</label>
+                        <input class="input-bordered" type="text" name="price" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Product Description</label>
+                        <textarea class="input-bordered" name="description" rows="3"></textarea>
+                      </div>
+                    </div>
+
+                    <!-- AGENT -->
+                    <div class="col-md-12">
+                      <h4>Agent Information</h4>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Agent Name</label>
+                        <input class="input-bordered" type="text" name="agent-name" />
+                      </div>
+                      <div class="input-item input-with-label">
+                        <label class="input-item-label">Agent Phone</label>
+                        <input class="input-bordered" type="text" name="agent-phone" />
+                      </div>
+
+                      <div class="gaps-1x"></div>
+                      <div class="d-sm-flex justify-content-between align-items-center">
+                        <button type="button" id="submitBtn" class="btn btn-primary">Proceed</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/jquery.bundle.js?ver=101"></script>
+    <script src="assets/js/script.js?ver=101"></script>
+    <script>
+      // Logout
+      document.querySelectorAll("#logoutBtn, #logoutBtn2").forEach((btn) => {
+        btn.addEventListener("click", async function (e) {
+          e.preventDefault();
+          await fetch("/api/admin/auth/logout", { method: "POST", credentials: "include" });
+          window.location.href = "/admin/auth/login.html";
+        });
+      });
+
+      document.getElementById("submitBtn").addEventListener("click", async function () {
+        const btn = this;
+        const msg = document.getElementById("formMsg");
+        msg.style.display = "none";
+
+        const form = document.getElementById("receiptForm");
+        const get = (name) => form.querySelector(`[name="${name}"]`)?.value || "";
+
+        const payload = {
+          payerName: get("payer-name"),
+          payerPhone: get("payer-phone"),
+          payerAddress: get("payer-address"),
+          payerCity: get("payer-city"),
+          payerState: get("payer-state"),
+          payerCountry: get("payer-country"),
+          payerZip: get("payer-zip"),
+          payerEmail: get("payer-email"),
+          productName: get("name"),
+          date: get("date"),
+          price: get("price"),
+          description: get("description"),
+          agentName: get("agent-name"),
+          agentPhone: get("agent-phone"),
+        };
+
+        btn.disabled = true;
+        btn.textContent = "Saving...";
+
+        try {
+          const res = await fetch("/api/admin/receipts", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify(payload),
+          });
+
+          const data = await res.json();
+
+          if (data.ok) {
+            window.location.href = "receipts.html";
+          } else {
+            msg.style.color = "red";
+            msg.style.background = "#fff0f0";
+            msg.textContent = data.message || "Failed. Try again.";
+            msg.style.display = "block";
+          }
+        } catch (err) {
+          msg.style.color = "red";
+          msg.style.background = "#fff0f0";
+          msg.textContent = "Network error. Please try again.";
+          msg.style.display = "block";
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Proceed";
+        }
+      });
+    </script>
+
+    <script src="/admin-script/checkAuth.js"></script>
+
+  </body>
+</html>

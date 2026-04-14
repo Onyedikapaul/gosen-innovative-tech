@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="zxx" class="js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="shortcut icon" href="#" />
+    <title>Consignments - GOSEN INNOVATIVE TECHNOLOGY </title>
+    <link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=101" />
+    <link rel="stylesheet" href="assets/css/style.css?ver=101" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      .table td {
+        white-space: normal !important;
+      }
+      #loadingRow td {
+        text-align: center;
+        padding: 30px;
+        color: #888;
+      }
+    </style>
+  </head>
+
+  <body class="user-dashboard">
+    <!-- Topbar -->
+    <div class="topbar" style="padding-top: 15px; padding-bottom: 15px">
+      <div class="topbar-md d-lg-none">
+        <div class="container">
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="#" class="toggle-nav">
+              <div class="toggle-icon">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+              </div>
+            </a>
+            <div class="site-logo"><a href="../" class="site-brand"></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="d-lg-flex align-items-center justify-content-between">
+          <div class="topbar-lg d-none d-lg-block">
+            <div class="site-logo"><a href="../" class="site-brand"></a></div>
+          </div>
+          <div class="topbar-action d-none d-lg-block">
+            <ul class="topbar-action-list">
+              <li class="dropdown topbar-action-item topbar-action-language">
+                <a href="#" data-toggle="dropdown"
+                  >EN <i class="fas fa-chevron-down"></i
+                ></a>
+              </li>
+              <li class="dropdown topbar-action-item topbar-action-user">
+                <a href="#" data-toggle="dropdown"
+                  ><img
+                    class="icon"
+                    src="assets/images/user-thumb-sm.png"
+                    alt="thumb"
+                /></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="user-dropdown">
+                    <div class="user-dropdown-head">
+                      <h6 class="user-dropdown-name">Admin</h6>
+                    </div>
+                    <ul class="user-dropdown-links">
+                      <li>
+                        <a href="account.html"
+                          ><i class="fas fa-id-badge"></i> My Profile</a
+                        >
+                      </li>
+                      <li>
+                        <a href="security.html"
+                          ><i class="fas fa-lock"></i> Security</a
+                        >
+                      </li>
+                    </ul>
+                    <ul class="user-dropdown-links">
+                      <li>
+                        <a href="#" id="logoutBtn"
+                          ><i class="fas fa-power-off"></i> Logout</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-wraper">
+      <div class="container">
+        <div class="d-flex">
+          <!-- Sidebar -->
+          <div class="user-sidebar">
+            <div class="user-sidebar-overlay"></div>
+            <ul class="user-icon-nav">
+              <li>
+                <a href="consignments.html"
+                  ><i class="fas fa-truck"></i> Consignments</a
+                >
+              </li>
+              <li>
+                <a href="add-consignment.html"
+                  ><i class="fas fa-pen"></i> Add Consignment</a
+                >
+              </li>
+              <li>
+                <a href="receipts.html"
+                  ><i class="fas fa-file-alt"></i> Receipts</a
+                >
+              </li>
+              <li>
+                <a href="add-receipt.html"
+                  ><i class="fas fa-pen"></i> Add Receipt</a
+                >
+              </li>
+              <!-- <li>
+                <a href="site-details.html"
+                  ><i class="fas fa-chart-pie"></i> Site Details</a
+                >
+              </li>
+              <li>
+                <a href="account.html"><i class="fas fa-user"></i> Account</a>
+              </li>
+              <li>
+                <a href="security.html"><i class="fas fa-lock"></i> Security</a>
+              </li> -->
+              <li>
+                <a href="#" id="logoutBtn2"
+                  ><i class="fas fa-power-off"></i> Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Content -->
+          <div class="user-content">
+            <div class="user-panel">
+              <h2 class="user-panel-title">Consignments</h2>
+
+              <table class="data-table tranx-table">
+                <thead>
+                  <tr>
+                    <th class="tranx-status"></th>
+                    <th class="tranx-no"><span>Tracking Code</span></th>
+                    <th class="tranx-token"><span> Name</span></th>
+                    <th class="tranx-action"></th>
+                  </tr>
+                </thead>
+                <tbody id="consignmentTableBody">
+                  <tr id="loadingRow">
+                    <td colspan="4">Loading consignments...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail/Edit Modal (populated dynamically) -->
+    <div class="modal fade" id="consignmentModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <a
+            href="#"
+            class="modal-close"
+            data-dismiss="modal"
+            aria-label="Close"
+            ><i class="fas fa-times"></i
+          ></a>
+          <div class="tranx-popup">
+            <form id="modalForm" class="tranx-purchase-details">
+              <h6>Consignment Details</h6>
+              <ul class="tranx-purchase-info">
+                <li>
+                  <div class="tranx-purchase-head">Tracking Code</div>
+                  <div class="tranx-purchase-des">
+                    <span id="modal-tracking"></span>
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Product Name</div>
+                  <div class="tranx-purchase-des">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="modal-productName"
+                    />
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Current Location</div>
+                  <div class="tranx-purchase-des">
+                    <select class="input-bordered" id="modal-location">
+                      <option value="Afghanistan">Afghanistan</option>
+                      <option value="Albania">Albania</option>
+                      <option value="Algeria">Algeria</option>
+                      <option value="Andorra">Andorra</option>
+                      <option value="Angola">Angola</option>
+                      <option value="Argentina">Argentina</option>
+                      <option value="Armenia">Armenia</option>
+                      <option value="Australia">Australia</option>
+                      <option value="Austria">Austria</option>
+                      <option value="Azerbaijan">Azerbaijan</option>
+                      <option value="Bahamas">Bahamas</option>
+                      <option value="Bahrain">Bahrain</option>
+                      <option value="Bangladesh">Bangladesh</option>
+                      <option value="Belarus">Belarus</option>
+                      <option value="Belgium">Belgium</option>
+                      <option value="Belize">Belize</option>
+                      <option value="Benin">Benin</option>
+                      <option value="Bolivia">Bolivia</option>
+                      <option value="Bosnia & Herzegovina">
+                        Bosnia & Herzegovina
+                      </option>
+                      <option value="Botswana">Botswana</option>
+                      <option value="Brazil">Brazil</option>
+                      <option value="Brunei">Brunei</option>
+                      <option value="Bulgaria">Bulgaria</option>
+                      <option value="Burkina Faso">Burkina Faso</option>
+                      <option value="Burundi">Burundi</option>
+                      <option value="Cambodia">Cambodia</option>
+                      <option value="Cameroon">Cameroon</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Chile">Chile</option>
+                      <option value="China">China</option>
+                      <option value="Colombia">Colombia</option>
+                      <option value="Congo">Congo</option>
+                      <option value="Costa Rica">Costa Rica</option>
+                      <option value="Croatia">Croatia</option>
+                      <option value="Cuba">Cuba</option>
+                      <option value="Cyprus">Cyprus</option>
+                      <option value="Czech Republic">Czech Republic</option>
+                      <option value="Denmark">Denmark</option>
+                      <option value="Dominican Republic">
+                        Dominican Republic
+                      </option>
+                      <option value="Ecuador">Ecuador</option>
+                      <option value="Egypt">Egypt</option>
+                      <option value="El Salvador">El Salvador</option>
+                      <option value="Estonia">Estonia</option>
+                      <option value="Ethiopia">Ethiopia</option>
+                      <option value="Finland">Finland</option>
+                      <option value="France">France</option>
+                      <option value="Gabon">Gabon</option>
+                      <option value="Gambia">Gambia</option>
+                      <option value="Georgia">Georgia</option>
+                      <option value="Germany">Germany</option>
+                      <option value="Ghana">Ghana</option>
+                      <option value="Greece">Greece</option>
+                      <option value="Guatemala">Guatemala</option>
+                      <option value="Guinea">Guinea</option>
+                      <option value="Haiti">Haiti</option>
+                      <option value="Honduras">Honduras</option>
+                      <option value="Hong Kong">Hong Kong</option>
+                      <option value="Hungary">Hungary</option>
+                      <option value="Iceland">Iceland</option>
+                      <option value="India">India</option>
+                      <option value="Indonesia">Indonesia</option>
+                      <option value="Iran">Iran</option>
+                      <option value="Iraq">Iraq</option>
+                      <option value="Ireland">Ireland</option>
+                      <option value="Israel">Israel</option>
+                      <option value="Italy">Italy</option>
+                      <option value="Jamaica">Jamaica</option>
+                      <option value="Japan">Japan</option>
+                      <option value="Jordan">Jordan</option>
+                      <option value="Kazakhstan">Kazakhstan</option>
+                      <option value="Kenya">Kenya</option>
+                      <option value="Korea North">Korea North</option>
+                      <option value="Korea South">Korea South</option>
+                      <option value="Kuwait">Kuwait</option>
+                      <option value="Laos">Laos</option>
+                      <option value="Latvia">Latvia</option>
+                      <option value="Lebanon">Lebanon</option>
+                      <option value="Libya">Libya</option>
+                      <option value="Lithuania">Lithuania</option>
+                      <option value="Luxembourg">Luxembourg</option>
+                      <option value="Malaysia">Malaysia</option>
+                      <option value="Mali">Mali</option>
+                      <option value="Malta">Malta</option>
+                      <option value="Mexico">Mexico</option>
+                      <option value="Moldova">Moldova</option>
+                      <option value="Monaco">Monaco</option>
+                      <option value="Mongolia">Mongolia</option>
+                      <option value="Morocco">Morocco</option>
+                      <option value="Mozambique">Mozambique</option>
+                      <option value="Myanmar">Myanmar</option>
+                      <option value="Nepal">Nepal</option>
+                      <option value="Netherlands">Netherlands</option>
+                      <option value="New Zealand">New Zealand</option>
+                      <option value="Nicaragua">Nicaragua</option>
+                      <option value="Niger">Niger</option>
+                      <option value="Nigeria">Nigeria</option>
+                      <option value="Norway">Norway</option>
+                      <option value="Oman">Oman</option>
+                      <option value="Pakistan">Pakistan</option>
+                      <option value="Palestine">Palestine</option>
+                      <option value="Panama">Panama</option>
+                      <option value="Paraguay">Paraguay</option>
+                      <option value="Peru">Peru</option>
+                      <option value="Philippines">Philippines</option>
+                      <option value="Poland">Poland</option>
+                      <option value="Portugal">Portugal</option>
+                      <option value="Qatar">Qatar</option>
+                      <option value="Romania">Romania</option>
+                      <option value="Russia">Russia</option>
+                      <option value="Rwanda">Rwanda</option>
+                      <option value="Saudi Arabia">Saudi Arabia</option>
+                      <option value="Senegal">Senegal</option>
+                      <option value="Singapore">Singapore</option>
+                      <option value="Slovakia">Slovakia</option>
+                      <option value="Somalia">Somalia</option>
+                      <option value="South Africa">South Africa</option>
+                      <option value="Spain">Spain</option>
+                      <option value="Sri Lanka">Sri Lanka</option>
+                      <option value="Sudan">Sudan</option>
+                      <option value="Sweden">Sweden</option>
+                      <option value="Switzerland">Switzerland</option>
+                      <option value="Syria">Syria</option>
+                      <option value="Taiwan">Taiwan</option>
+                      <option value="Tanzania">Tanzania</option>
+                      <option value="Thailand">Thailand</option>
+                      <option value="Togo">Togo</option>
+                      <option value="Trinidad & Tobago">
+                        Trinidad & Tobago
+                      </option>
+                      <option value="Tunisia">Tunisia</option>
+                      <option value="Turkey">Turkey</option>
+                      <option value="Uganda">Uganda</option>
+                      <option value="Ukraine">Ukraine</option>
+                      <option value="United Arab Emirates">
+                        United Arab Emirates
+                      </option>
+                      <option value="United Kingdom">United Kingdom</option>
+                      <option value="United States of America">
+                        United States of America
+                      </option>
+                      <option value="Uruguay">Uruguay</option>
+                      <option value="Uzbekistan">Uzbekistan</option>
+                      <option value="Venezuela">Venezuela</option>
+                      <option value="Vietnam">Vietnam</option>
+                      <option value="Yemen">Yemen</option>
+                      <option value="Zambia">Zambia</option>
+                      <option value="Zimbabwe">Zimbabwe</option>
+                    </select>
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Price</div>
+                  <div class="tranx-purchase-des">
+                    <input type="text" class="form-control" id="modal-price" />
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Status</div>
+                  <div class="tranx-purchase-des">
+                    <select class="form-control" id="modal-status">
+                      <option>Processing</option>
+                      <option>On Hold</option>
+                      <option>On Transit</option>
+                      <option>Shipped</option>
+                      <option>Arrived</option>
+                    </select>
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Departure</div>
+                  <div class="tranx-purchase-des">
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="modal-departure"
+                    />
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Arrival</div>
+                  <div class="tranx-purchase-des">
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="modal-arrival"
+                    />
+                  </div>
+                </li>
+              </ul>
+
+              <h6><span>Description</span></h6>
+              <div class="tranx-payment-info">
+                <textarea
+                  class="form-control"
+                  id="modal-description"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <!-- <div
+                style="
+                  margin-top: 15px;
+                  display: flex;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                  align-items: center;
+                "
+              >
+                <button type="button" id="modalSaveBtn" class="btn btn-primary">
+                  Save
+                </button>
+                <button
+                  type="button"
+                  id="modalDeleteBtn"
+                  class="btn btn-danger"
+                >
+                  Delete
+                </button>
+              </div> -->
+
+
+              <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+  <button type="button" id="modalSaveBtn" class="btn btn-primary">Save</button>
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="modalPrintDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Print
+    </button>
+    <div class="dropdown-menu" aria-labelledby="modalPrintDropdown">
+      <a class="dropdown-item" id="modalPrint1" href="#">Print 1</a>
+      <a class="dropdown-item" id="modalPrint2" href="#">Print 2</a>
+      <a class="dropdown-item" id="modalPrint3" href="#">Print 3</a>
+    </div>
+  </div>
+
+  <a id="modalEditBtn" href="#" class="btn btn-warning">Edit</a>
+  <button type="button" id="modalDeleteBtn" class="btn btn-danger">Delete</button>
+</div>
+
+
+              <p
+                id="modalMsg"
+                style="
+                  margin-top: 10px;
+                  display: none;
+                  padding: 8px;
+                  border-radius: 4px;
+                "
+              ></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/jquery.bundle.js?ver=101"></script>
+    <script src="assets/js/script.js?ver=101"></script>
+
+    <script>
+  let currentId = null;
+
+  // Logout
+  document.querySelectorAll("#logoutBtn, #logoutBtn2").forEach((btn) => {
+    btn.addEventListener("click", async function (e) {
+      e.preventDefault();
+      await fetch("/api/admin/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      window.location.href = "/admin/auth/login.html";
+    });
+  });
+
+  // Status → icon/color mapping
+  function statusClass(status) {
+    const map = {
+      Arrived: "tranx-status-approved",
+      Processing: "tranx-status-pending",
+      "On Hold": "tranx-status-pending",
+      "On Transit": "tranx-status-pending",
+      Shipped: "tranx-status-pending",
+    };
+    return map[status] || "tranx-status-pending";
+  }
+
+  function statusIcon(status) {
+    const map = {
+      Arrived: "fa-check",
+      Shipped: "fa-truck",
+      "On Transit": "fa-truck",
+      Processing: "fa-spinner",
+      "On Hold": "fa-pause",
+    };
+    return map[status] || "fa-circle";
+  }
+
+  // Format date to YYYY-MM-DD for input[type=date]
+  function toDateInput(val) {
+    if (!val) return "";
+    return new Date(val).toISOString().split("T")[0];
+  }
+
+  // Load all consignments
+  async function loadConsignments() {
+    try {
+      const res = await fetch("/api/admin/consignments", {
+        credentials: "include",
+      });
+      const data = await res.json();
+
+      const tbody = document.getElementById("consignmentTableBody");
+
+      if (!data.ok || !data.consignments.length) {
+        tbody.innerHTML =
+          '<tr><td colspan="4" style="text-align:center;padding:30px;color:#888;">No consignments found.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = data.consignments
+        .map(
+          (c) => `
+          <tr>
+            <td class="tranx-status ${statusClass(c.status)}">
+              <span class="d-none">${c.status}</span>
+              <i class="fas ${statusIcon(c.status)}"></i>
+            </td>
+            <td class="tranx-no"><span>${c.trackingNumber}</span></td>
+            <td class="tranx-token"><span>${c.sender?.name || "—"}</span></td>
+            <td class="tranx-action">
+              <a href="#" onclick="openModal('${c._id}'); return false;">
+                <i class="fas fa-ellipsis-h"></i>
+              </a>
+            </td>
+          </tr>
+        `
+        )
+        .join("");
+    } catch (err) {
+      document.getElementById("consignmentTableBody").innerHTML =
+        '<tr><td colspan="4" style="text-align:center;padding:30px;color:red;">Failed to load consignments.</td></tr>';
+    }
+  }
+
+  // Open modal and populate with data
+  async function openModal(id) {
+    currentId = id;
+    const msg = document.getElementById("modalMsg");
+    msg.style.display = "none";
+
+    try {
+      const res = await fetch(`/api/admin/consignments/${id}`, {
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (!data.ok) return;
+
+      const c = data.consignment;
+
+      document.getElementById("modal-tracking").textContent = c.trackingNumber;
+      document.getElementById("modal-productName").value = c.productName || "";
+      document.getElementById("modal-price").value = c.price || "";
+      document.getElementById("modal-description").value = c.description || "";
+      document.getElementById("modal-departure").value = toDateInput(c.departure);
+      document.getElementById("modal-arrival").value = toDateInput(c.arrival);
+
+      // Status: move selected value to top
+      const statusEl = document.getElementById("modal-status");
+      const statusOptions = ["Processing", "On Hold", "On Transit", "Shipped", "Arrived"];
+      const currentStatus = c.status || "Processing";
+      statusEl.innerHTML = [currentStatus, ...statusOptions.filter(s => s !== currentStatus)]
+        .map(s => `<option value="${s}">${s}</option>`)
+        .join("");
+
+      // Location: move selected country to top
+      const locationEl = document.getElementById("modal-location");
+      const currentLocation = c.location || "";
+      const allOptions = Array.from(locationEl.options).map(o => o.value);
+      locationEl.innerHTML = [currentLocation, ...allOptions.filter(v => v !== currentLocation)]
+        .map(v => `<option value="${v}">${v}</option>`)
+        .join("");
+
+      // Wire up print links
+      const code = c.trackingNumber;
+      document.getElementById("modalPrint1").href = `print-new.html?t=${code}`;
+      document.getElementById("modalPrint2").href = `print1.html?t=${code}`;
+      document.getElementById("modalPrint3").href = `print2.html?t=${code}`;
+
+      // Wire up edit link
+      document.getElementById("modalEditBtn").href = `edit-consignment.html?code=${code}`;
+
+      $("#consignmentModal").modal("show");
+    } catch (err) {
+      alert("Failed to load consignment details.");
+    }
+  }
+
+  // Save (update)
+  document.getElementById("modalSaveBtn").addEventListener("click", async function () {
+    const btn = this;
+    const msg = document.getElementById("modalMsg");
+    btn.disabled = true;
+    btn.textContent = "Saving...";
+    msg.style.display = "none";
+
+    const payload = {
+      productName: document.getElementById("modal-productName").value,
+      price: document.getElementById("modal-price").value,
+      description: document.getElementById("modal-description").value,
+      departure: document.getElementById("modal-departure").value,
+      arrival: document.getElementById("modal-arrival").value,
+      status: document.getElementById("modal-status").value,
+      location: document.getElementById("modal-location").value,
+    };
+
+    try {
+      const res = await fetch(`/api/admin/consignments/${currentId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        msg.style.color = "green";
+        msg.style.background = "#eaffea";
+        msg.textContent = "✓ Saved successfully!";
+        msg.style.display = "block";
+        loadConsignments();
+      } else {
+        msg.style.color = "red";
+        msg.style.background = "#fff0f0";
+        msg.textContent = data.message || "Failed to save.";
+        msg.style.display = "block";
+      }
+    } catch (err) {
+      msg.style.color = "red";
+      msg.style.background = "#fff0f0";
+      msg.textContent = "Network error.";
+      msg.style.display = "block";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Save";
+    }
+  });
+
+  // Delete
+  document.getElementById("modalDeleteBtn").addEventListener("click", async function () {
+    if (!confirm("Are you sure you want to delete this consignment?")) return;
+
+    const btn = this;
+    btn.disabled = true;
+    btn.textContent = "Deleting...";
+
+    try {
+      const res = await fetch(`/api/admin/consignments/${currentId}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        $("#consignmentModal").modal("hide");
+        loadConsignments();
+      } else {
+        alert(data.message || "Failed to delete.");
+      }
+    } catch (err) {
+      alert("Network error.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Delete";
+    }
+  });
+
+  // Init
+  loadConsignments();
+</script>
+
+    <script src="/admin-script/checkAuth.js"></script>
+  
+  </body>
+</html>

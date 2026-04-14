@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" class="js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Bitfinex Investment" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <title>Sepangar Expresss Courier</title>
+    <link rel="stylesheet" href="/assets1/css/vendor.bundle.css?ver=192" />
+    <link
+      rel="stylesheet"
+      href="/assets1/css/style.css?ver=192"
+      id="changeTheme"
+    />
+    <link rel="stylesheet" href="/assets1/css/theme.css?ver=192" />
+    <style>
+      .bg-theme {
+        background-color: #0a1227 !important;
+      }
+      .error-msg {
+        color: #e74c3c;
+        font-size: 13px;
+        margin-top: 8px;
+        text-align: center;
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body class="nk-body body-wider bg-light-alt">
+    <div class="nk-wrap">
+      <main class="nk-pages">
+        <div class="section">
+          <div class="container">
+            <div class="nk-blocks d-flex justify-content-center">
+              <div class="ath-container m-0">
+                <div class="ath-body">
+                  <h5 class="ath-heading title">Sign In</h5>
+
+                  <div class="field-item">
+                    <div class="field-wrap">
+                      <input
+                        type="email"
+                        class="input-bordered"
+                        id="email"
+                        placeholder="Your Email"
+                      />
+                    </div>
+                  </div>
+                  <div class="field-item">
+                    <div class="field-wrap">
+                      <input
+                        type="password"
+                        class="input-bordered"
+                        id="password"
+                        placeholder="Password"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="field-item d-flex justify-content-between align-items-center"
+                  >
+                    <div class="field-item pb-0">
+                      <input
+                        class="input-checkbox"
+                        id="remember-me-100"
+                        type="checkbox"
+                      />
+                      <label for="remember-me-100">Remember Me</label>
+                    </div>
+                    <div class="forget-link fz-6">
+                      <a href="forgot-password.php">Forgot password?</a>
+                    </div>
+                  </div>
+
+                  <p class="error-msg" id="errorMsg"></p>
+
+                  <button
+                    type="button"
+                    id="loginBtn"
+                    class="btn btn-primary btn-block btn-md"
+                    style="width: 100%"
+                  >
+                    Sign In
+                  </button>
+
+                  <div class="ath-note text-center">
+                    Don't have an account?
+                    <a href="signup.php"><strong>Sign up here</strong></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      document
+        .getElementById("loginBtn")
+        .addEventListener("click", async function () {
+          const btn = this;
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value;
+          const errorMsg = document.getElementById("errorMsg");
+
+          errorMsg.style.display = "none";
+
+          if (!email || !password) {
+            errorMsg.textContent = "Please enter your email and password.";
+            errorMsg.style.display = "block";
+            return;
+          }
+
+          btn.disabled = true;
+          btn.textContent = "Signing in...";
+
+          try {
+            const res = await fetch("/api/admin/auth/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include", // important — sends/receives the httpOnly cookie
+              body: JSON.stringify({ email, password }),
+            });
+
+            const data = await res.json();
+
+            if (data.ok) {
+              window.location.href = "/admin/dashboard/consignments.html"; // change to your actual dashboard path
+            } else {
+              errorMsg.textContent = data.message || "Login failed. Try again.";
+              errorMsg.style.display = "block";
+            }
+          } catch (err) {
+            errorMsg.textContent = "Network error. Please try again.";
+            errorMsg.style.display = "block";
+          } finally {
+            btn.disabled = false;
+            btn.textContent = "Sign In";
+          }
+        });
+    </script>
+  </body>
+</html>

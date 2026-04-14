@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="#">
+  <title>Receipts - GOSEN INNOVATIVE TECHNOLOGY </title>
+  <link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=101">
+  <link rel="stylesheet" href="assets/css/style.css?ver=101">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .table td { white-space: normal !important; }
+    #loadingRow td { text-align: center; padding: 30px; color: #888; }
+  </style>
+</head>
+
+<body class="user-dashboard">
+
+  <div class="topbar" style="padding-top:15px; padding-bottom:15px;">
+    <div class="topbar-md d-lg-none">
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <a href="#" class="toggle-nav">
+            <div class="toggle-icon">
+              <span class="toggle-line"></span>
+              <span class="toggle-line"></span>
+              <span class="toggle-line"></span>
+              <span class="toggle-line"></span>
+            </div>
+          </a>
+          <div class="site-logo"><a href="../" class="site-brand"></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="d-lg-flex align-items-center justify-content-between">
+        <div class="topbar-lg d-none d-lg-block">
+          <div class="site-logo"><a href="../" class="site-brand"></a></div>
+        </div>
+        <div class="topbar-action d-none d-lg-block">
+          <ul class="topbar-action-list">
+            <li class="dropdown topbar-action-item topbar-action-language">
+              <a href="#" data-toggle="dropdown">EN <i class="fas fa-chevron-down"></i></a>
+            </li>
+            <li class="dropdown topbar-action-item topbar-action-user">
+              <a href="#" data-toggle="dropdown">
+                <img class="icon" src="assets/images/user-thumb-sm.png" alt="thumb">
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="user-dropdown">
+                  <div class="user-dropdown-head">
+                    <h6 class="user-dropdown-name">Admin</h6>
+                  </div>
+                  <ul class="user-dropdown-links">
+                    <li><a href="account.html"><i class="fas fa-id-badge"></i> My Profile</a></li>
+                    <li><a href="security.html"><i class="fas fa-lock"></i> Security</a></li>
+                  </ul>
+                  <ul class="user-dropdown-links">
+                    <li><a href="#" id="logoutBtn"><i class="fas fa-power-off"></i> Logout</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="user-wraper">
+    <div class="container">
+      <div class="d-flex">
+
+        <div class="user-sidebar">
+          <div class="user-sidebar-overlay"></div>
+          <ul class="user-icon-nav">
+            <li><a href="consignments.html"><i class="fas fa-truck"></i> Consignments</a></li>
+            <li><a href="add-consignment.html"><i class="fas fa-pen"></i> Add Consignment</a></li>
+            <li><a href="receipts.html"><i class="fas fa-file-alt"></i> Receipts</a></li>
+            <li><a href="add-receipt.html"><i class="fas fa-pen"></i> Add Receipt</a></li>
+            <!-- <li><a href="site-details.html"><i class="fas fa-chart-pie"></i> Site Details</a></li>
+            <li><a href="account.html"><i class="fas fa-user"></i> Account</a></li>
+            <li><a href="security.html"><i class="fas fa-lock"></i> Security</a></li> -->
+            <li><a href="#" id="logoutBtn2"><i class="fas fa-power-off"></i> Logout</a></li>
+          </ul>
+        </div>
+
+        <div class="user-content">
+          <div class="user-panel">
+            <h2 class="user-panel-title">Receipts</h2>
+
+            <table class="data-table tranx-table">
+              <thead>
+                <tr>
+                  <th class="tranx-status"></th>
+                  <th class="tranx-no"><span>Receipt No.</span></th>
+                  <th class="tranx-token"><span>Payer Name</span></th>
+                  <th class="tranx-action"></th>
+                </tr>
+              </thead>
+              <tbody id="receiptTableBody">
+                <tr id="loadingRow">
+                  <td colspan="4">Loading receipts...</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="receiptModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <a href="#" class="modal-close" data-dismiss="modal" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </a>
+        <div class="tranx-popup">
+          <form id="modalForm" class="tranx-purchase-details">
+            <h6>Receipt Details</h6>
+            <ul class="tranx-purchase-info">
+              <li>
+                <div class="tranx-purchase-head">Receipt No.</div>
+                <div class="tranx-purchase-des"><span id="modal-receiptNumber"></span></div>
+              </li>
+              <li>
+                <div class="tranx-purchase-head">Name</div>
+                <div class="tranx-purchase-des">
+                  <input type="text" class="form-control" id="modal-productName">
+                </div>
+              </li>
+              <li>
+                <div class="tranx-purchase-head">Price</div>
+                <div class="tranx-purchase-des">
+                  <input type="text" class="form-control" id="modal-price">
+                </div>
+              </li>
+              <li>
+                <div class="tranx-purchase-head">Date</div>
+                <div class="tranx-purchase-des">
+                  <input type="date" class="form-control" id="modal-date">
+                </div>
+              </li>
+            </ul>
+
+            <h6><span>Description</span></h6>
+            <div class="tranx-payment-info">
+              <textarea class="form-control" id="modal-description" rows="3"></textarea>
+            </div>
+
+            <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <button type="button" id="modalSaveBtn" class="btn btn-primary">Save</button>
+              <a id="modalPrintBtn" href="#" class="btn btn-warning">Print</a>
+              <button type="button" id="modalDeleteBtn" class="btn btn-danger">Delete</button>
+            </div>
+
+            <p id="modalMsg" style="margin-top:10px; display:none; padding:8px; border-radius:4px;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/jquery.bundle.js?ver=101"></script>
+  <script src="assets/js/script.js?ver=101"></script>
+  <script>
+    let currentId = null;
+
+    // Logout
+    document.querySelectorAll('#logoutBtn, #logoutBtn2').forEach(btn => {
+      btn.addEventListener('click', async function (e) {
+        e.preventDefault();
+        await fetch('/api/admin/auth/logout', { method: 'POST', credentials: 'include' });
+        window.location.href = '/admin/auth/login.html';
+      });
+    });
+
+    function toDateInput(val) {
+      if (!val) return '';
+      return new Date(val).toISOString().split('T')[0];
+    }
+
+    // Load all receipts
+    async function loadReceipts() {
+      try {
+        const res = await fetch('/api/admin/receipts', { credentials: 'include' });
+        const data = await res.json();
+        const tbody = document.getElementById('receiptTableBody');
+
+        if (!data.ok || !data.receipts.length) {
+          tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:30px;color:#888;">No receipts found.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = data.receipts.map(r => `
+          <tr>
+            <td class="tranx-status tranx-status-approved">
+              <i class="fas fa-check"></i>
+            </td>
+            <td class="tranx-no"><span>${r.receiptNumber}</span></td>
+            <td class="tranx-token"><span>${r.payer?.name || '—'}</span></td>
+            <td class="tranx-action">
+              <a href="#" onclick="openModal('${r._id}'); return false;">
+                <i class="fas fa-ellipsis-h"></i>
+              </a>
+            </td>
+          </tr>
+        `).join('');
+
+      } catch (err) {
+        document.getElementById('receiptTableBody').innerHTML =
+          '<tr><td colspan="4" style="text-align:center;padding:30px;color:red;">Failed to load receipts.</td></tr>';
+      }
+    }
+
+    // Open modal
+    async function openModal(id) {
+      currentId = id;
+      const msg = document.getElementById('modalMsg');
+      msg.style.display = 'none';
+
+      try {
+        const res = await fetch(`/api/admin/receipts/${id}`, { credentials: 'include' });
+        const data = await res.json();
+        if (!data.ok) return;
+
+        const r = data.receipt;
+
+        document.getElementById('modal-receiptNumber').textContent = r.receiptNumber;
+        document.getElementById('modal-productName').value = r.productName || '';
+        document.getElementById('modal-price').value = r.price || '';
+        document.getElementById('modal-date').value = toDateInput(r.date);
+        document.getElementById('modal-description').value = r.description || '';
+
+        // Wire print link
+        document.getElementById('modalPrintBtn').href = `receipt-print.html?t=${r.receiptNumber}`;
+
+        $('#receiptModal').modal('show');
+      } catch (err) {
+        alert('Failed to load receipt details.');
+      }
+    }
+
+    // Save — only updates product fields, preserves payer/agent data
+    document.getElementById('modalSaveBtn').addEventListener('click', async function () {
+      const btn = this;
+      const msg = document.getElementById('modalMsg');
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+      msg.style.display = 'none';
+
+      const payload = {
+        productName: document.getElementById('modal-productName').value,
+        price: document.getElementById('modal-price').value,
+        date: document.getElementById('modal-date').value,
+        description: document.getElementById('modal-description').value,
+      };
+
+      try {
+        const res = await fetch(`/api/admin/receipts/${currentId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+
+        if (data.ok) {
+          msg.style.color = 'green';
+          msg.style.background = '#eaffea';
+          msg.textContent = '✓ Saved successfully!';
+          msg.style.display = 'block';
+          loadReceipts();
+        } else {
+          msg.style.color = 'red';
+          msg.style.background = '#fff0f0';
+          msg.textContent = data.message || 'Failed to save.';
+          msg.style.display = 'block';
+        }
+      } catch (err) {
+        msg.style.color = 'red';
+        msg.style.background = '#fff0f0';
+        msg.textContent = 'Network error.';
+        msg.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Save';
+      }
+    });
+
+    // Delete
+    document.getElementById('modalDeleteBtn').addEventListener('click', async function () {
+      if (!confirm('Are you sure you want to delete this receipt?')) return;
+
+      const btn = this;
+      btn.disabled = true;
+      btn.textContent = 'Deleting...';
+
+      try {
+        const res = await fetch(`/api/admin/receipts/${currentId}`, {
+          method: 'DELETE',
+          credentials: 'include',
+        });
+        const data = await res.json();
+
+        if (data.ok) {
+          $('#receiptModal').modal('hide');
+          loadReceipts();
+        } else {
+          alert(data.message || 'Failed to delete.');
+        }
+      } catch (err) {
+        alert('Network error.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Delete';
+      }
+    });
+
+    // Init
+    loadReceipts();
+  </script>
+
+  <script src="/admin-script/checkAuth.js"></script>
+
+</body>
+</html>

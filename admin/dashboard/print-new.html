@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Print Tracking</title>
+  <style>
+    .main-head { font-weight: bolder; }
+    .main-head2 { font-weight: bolder; font-size: 12px; }
+    .main-body { }
+    .main-body2 { font-size: 12px; font-weight: bold; }
+  </style>
+</head>
+
+<body style="background-color:#CCC; margin:0; padding:0;">
+
+<div id="div1" style="width:850px; margin:auto; background-color:#FFF;">
+  <div id="div2" style="width:850px; min-height:650px; background-image:url(left1.jpg); background-position:left; background-repeat:no-repeat;">
+    <div id="div3" style="width:auto; min-height:650px; margin-left:30px;" align="right">
+
+      <div id="header" style="width:100%; padding-bottom:5px;">
+
+        <!-- LEFT SIDE -->
+        <div style="width:53%; float:left; text-align:left; margin-left:15px;">
+          <div style="padding-left:15px;">
+            <img src="/admin/dashboard/assets/images/logo-1.png" height="40">
+            <img src="/admin/dashboard/assets/images/dec.png" height="40">
+          </div>
+
+          <!-- SECTION 1: SENDER -->
+          <div style="padding-left:15px; margin-top:5px;">
+            <div style="width:15px; float:left;"><b>1</b></div>
+            <div style="width:400px; float:right;">
+              <b>From</b> <i>(Sender's information)</i>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Date</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-date"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="font-size:12px; color:#333;">AWB</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-awb"></span>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Sender's Name</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-sender-name"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="font-size:12px; color:#333;">Phone</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-sender-phone"></span>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Company</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-sender-company"></span>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Address</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-sender-address"></span>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <p style="width:45%; float:left; margin:0; padding:0;">
+                  <span style="font-size:12px; color:#333;">City</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:16px; font-weight:bolder;" id="p-sender-city"></span>
+                </p>
+                <p style="width:55%; float:right; margin:0; padding:0;">
+                  <span style="font-size:12px; color:#333;">State/Province</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:16px; font-weight:bolder;" id="p-sender-state"></span>
+                </p>
+                <p style="clear:both; margin:0; padding:0;"></p>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <p style="width:45%; float:left; margin:0; padding:0;">
+                  <span style="font-size:12px; color:#333;">Country</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:16px; font-weight:bolder;" id="p-sender-country"></span>
+                </p>
+                <p style="width:55%; float:right; margin:0; padding:0;">
+                  <span style="font-size:12px; color:#333;">Zip Code</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:16px; font-weight:bolder;" id="p-sender-zip"></span>
+                </p>
+                <p style="clear:both; margin:0; padding:0;"></p>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Email</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-sender-email"></span>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Reference</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-reference"></span>
+              </div>
+
+            </div>
+            <div style="clear:both"></div>
+          </div>
+
+          <!-- SECTION 2: RECEIVER -->
+          <div style="padding-left:15px; margin-top:30px;">
+            <img src="/admin/dashboard/assets/images/logo-bottom-line.png" width="100%" height="2" alt="" style="margin-bottom:5px;">
+            <div style="width:15px; float:left;"><b>2</b></div>
+            <div style="width:400px; float:right;">
+              <b>To</b> <i>(receiver's information)</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span style="font-size:12px;"><input type="checkbox" checked="checked"> Residential Delivery</span>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Receiver's Name</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-receiver-name"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="font-size:12px; color:#333;">Phone</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-receiver-phone"></span>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Company</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-receiver-company"></span>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Address</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-receiver-address"></span>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <p style="width:45%; float:left; margin:0; padding:0;">
+                  <span style="font-size:12px; color:#333;">City</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:16px; font-weight:bolder;" id="p-receiver-city"></span>
+                </p>
+                <p style="width:55%; float:right; margin:0; padding:0;">
+                  <span style="font-size:12px; color:#333;">State/Province</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:16px; font-weight:bolder;" id="p-receiver-state"></span>
+                </p>
+                <p style="clear:both; margin:0; padding:0;"></p>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <p style="width:45%; float:left; margin:0; padding:0;">
+                  <span style="font-size:12px; color:#333;">Country</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:16px; font-weight:bolder;" id="p-receiver-country"></span>
+                </p>
+                <p style="width:55%; float:right; margin:0; padding:0;">
+                  <span style="font-size:12px; color:#333;">Zip Code</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:16px; font-weight:bolder;" id="p-receiver-zip"></span>
+                </p>
+                <p style="clear:both; margin:0; padding:0;"></p>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Email</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-receiver-email"></span>
+              </div>
+
+            </div>
+            <div style="clear:both"></div>
+          </div>
+
+          <!-- SECTION 3: SHIPMENT INFO -->
+          <div style="padding-left:15px; margin-top:30px;">
+            <img src="/admin/dashboard/assets/images/logo-bottom-line.png" width="100%" alt="" style="margin-bottom:5px;">
+            <div style="width:15px; float:left;"><b>3</b></div>
+            <div style="width:400px; float:right;">
+              <b>Shipment Information</b>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Departure</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-departure"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="font-size:12px; color:#333;">Arrival</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-arrival"></span>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Trans-route Schedule</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;" id="p-route"></span>
+              </div>
+
+              <div style="margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Package Description</span>
+              </div>
+
+              <div style="border:1px solid #666; margin-top:2px; padding:8px;">
+                <span style="font-size:16px; font-weight:bolder;" id="p-description"></span>
+              </div>
+
+              <div style="border-bottom:1px solid #666; margin-top:10px;">
+                <span style="font-size:12px; color:#333;">Package Type</span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size:16px; font-weight:bolder;">Express Parcel</span>
+              </div>
+
+              <div style="margin-top:20px; width:auto;">
+                <span style="font-size:20px; font-weight:bolder;">$</span>
+                <span style="font-size:20px; font-weight:bolder;" id="p-price"></span>
+              </div>
+
+              <div style="margin-top:-50px; padding:8px;" align="right">
+                <img src="/admin/dashboard/assets/images/approved2.png" width="150">
+              </div>
+
+            </div>
+            <div style="clear:both"></div>
+          </div>
+
+        </div>
+        <!-- END LEFT SIDE -->
+
+        <!-- RIGHT SIDE -->
+        <div style="width:43%; float:right; text-align:left; background-color:#F5EED2; min-height:650px;">
+
+          <div class="r-header" style="width:100%; font-size:18px; font-weight:bolder; background-color:#B9DDAF; color:#FFF; text-align:right; height:40px; background-image:url(right1.png); background-position:right; background-repeat:no-repeat;">
+            <p style="margin:0; padding:0; margin-right:35px; padding-top:8px;">Sender's Copy</p>
+          </div>
+
+          <div class="r-body" style="min-height:650px; background-image:url(right2.png); background-position:right; background-repeat:no-repeat;">
+
+            <div style="margin-top:20px; height:40px;" align="center">
+              <img src="/admin/dashboard/assets/images/awb.png" width="55" alt="AWB: " style="vertical-align:middle;">
+              <span style="background-color:#F47313; padding:5px; padding-bottom:10px; color:#FFF; font-weight:bolder; font-size:18px;" id="p-awb2"></span><br>
+              <span style="font-size:11px; margin-right:45px; color:#F47313;">Track your shipment with AWB at:<br>http://gosen-innovative-technology.pro/tracking.html</span>
+            </div>
+
+            <!-- 4a -->
+            <div style="padding-left:15px; margin-top:30px; width:100%;">
+              <img src="/admin/dashboard/assets/images/logo-bottom-line.png" width="304px" alt="" style="margin-bottom:5px;"><br>
+              <div style="width:15px; float:left;"><b>4a</b></div>
+              <div style="width:280px; float:right; padding-right:50px;" align="left">
+                <b>Express Package Service</b><br>
+                <span style="font-size:11px; color:#F47313;">NOTE: Level of priority is always considered</span>
+                <div style="border-bottom:1px solid #666; margin-top:10px;">
+                  <span style="font-size:12px; color:#333;"><input type="checkbox"> Fast Line Economy</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:12px; color:#333;"><input type="checkbox" checked="checked"> Fast Line Priority</span>
+                </div>
+              </div>
+              <div style="clear:both"></div>
+            </div>
+
+            <!-- 4b -->
+            <div style="padding-left:15px; margin-top:30px; width:100%;">
+              <img src="/admin/dashboard/assets/images/logo-bottom-line.png" width="304px" height="1" alt="" style="margin-bottom:5px;"><br>
+              <div style="width:15px; float:left;"><b>4b</b></div>
+              <div style="width:280px; float:right; padding-right:50px;" align="left">
+                <b>Express Freight Service</b>
+                <div style="border-bottom:1px solid #666; margin-top:10px;">
+                  <span style="font-size:12px; color:#333;"><input type="checkbox"> Economy Freight</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:12px; color:#333;"><input type="checkbox"> Priority Freight</span>
+                </div>
+              </div>
+              <div style="clear:both"></div>
+            </div>
+
+            <!-- 5 -->
+            <div style="padding-left:15px; margin-top:30px; width:100%;">
+              <img src="/admin/dashboard/assets/images/logo-bottom-line.png" width="304px" height="2" alt="" style="margin-bottom:5px;"><br>
+              <div style="width:15px; float:left;"><b>5</b></div>
+              <div style="width:280px; float:right; padding-right:50px;" align="left">
+                <b>Packaging</b>
+                <div style="border-bottom:1px solid #666; margin-top:10px;">
+                  <span style="font-size:12px; color:#333;"><input type="checkbox"> Fast Line Envelope</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:12px; color:#333;"><input type="checkbox"> Fast Line Box</span>
+                </div>
+                <div style="border-bottom:1px solid #666; margin-top:10px;">
+                  <span style="font-size:12px; color:#333;"><input type="checkbox"> Fast Line Tube</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:12px; color:#333;"><input type="checkbox" checked="checked"> Other</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:16px; font-weight:bolder;">Express Parcel</span>
+                </div>
+              </div>
+              <div style="clear:both"></div>
+            </div>
+
+            <!-- 6 -->
+            <div style="padding-left:15px; margin-top:30px; width:100%;">
+              <img src="/admin/dashboard/assets/images/logo-bottom-line.png" width="304px" height="2" alt="" style="margin-bottom:5px;"><br>
+              <div style="width:15px; float:left;"><b>6</b></div>
+              <div style="width:280px; float:right; padding-right:50px;" align="left">
+                <b>Special Handling and Delivery Option</b>
+                <div style="border-bottom:1px solid #666; margin-top:10px;">
+                  <span style="font-size:12px; color:#333;"><input type="checkbox"> PICKUP at Location</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:12px; color:#333;"><input type="checkbox"> SATURDAY Delivery</span>
+                </div>
+                <div style="border-bottom:1px solid #666; margin-top:10px;">
+                  <span style="font-size:12px; color:#333;"><input type="checkbox"> SUNDAY Delivery</span>&nbsp;&nbsp;&nbsp;
+                  <span style="font-size:12px; color:#333;"><input type="checkbox" checked="checked"> Normal</span>
+                </div>
+              </div>
+              <div style="clear:both"></div>
+            </div>
+
+            <!-- 7 -->
+            <div style="padding-left:15px; margin-top:30px; width:100%; padding:20px;">
+              <img src="/admin/dashboard/assets/images/logo-bottom-line.png" width="304px" height="2" alt="" style="margin-bottom:5px;"><br>
+              <div style="width:15px; float:left;"><b>7</b></div>
+              <div style="width:280px; float:right; padding-right:50px;" align="left">
+                <b>Agreement</b>
+                <div style="border-bottom:1px solid #666; margin-top:10px;">
+                  <span style="font-size:12px; color:#333;">This is to certify that Fast line deliveries has collected the consignment described in this slip from the "Sender" and has accepted to deliver it to the "Receiver" to the address given by the Consigner. This parcel is carried under Fast line deliveries. This agreement herein is valid, correct and binding on the parties. Alteration on this Airway Bill of Fast Line after it has been duly issued and accepted renders this parcel valueless, null and void.</span>
+                </div>
+                <div style="border-bottom:1px solid #666; margin-top:10px; background-image:url(/admin/dashboard/assets/images/body2-bg.png); background-position:right; background-repeat:no-repeat;" align="right">
+                  <span style="font-size:12px; color:#333;"><img src="/admin/dashboard/assets/images/sign-right2.png" width="216"><br>Authorized Signature</span>
+                </div>
+              </div>
+              <div style="clear:both"></div>
+            </div>
+
+          </div>
+        </div>
+        <!-- END RIGHT SIDE -->
+
+        <div style="clear:both"></div>
+      </div>
+
+      <!-- BADGES -->
+      <table width="100%" cellpadding="0" cellspacing="0" style="padding-bottom:10px;" align="center">
+        <tbody>
+          <tr>
+            <td width="25%" valign="top" align="center"><img src="/admin/dashboard/assets/images/badge-3.png" width="120"></td>
+            <td width="25%" valign="top" align="center"><img src="/admin/dashboard/assets/images/badge-2.jpg" width="60"></td>
+            <td width="25%" valign="top" align="center"><img src="/admin/dashboard/assets/images/badge-4.png" width="60"></td>
+            <td width="25%" valign="top" align="center"><img src="/admin/dashboard/assets/images/badge-5.jpg" width="60"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- FOOTER -->
+      <div align="center" style="padding-left:30px; padding-bottom:15px; padding-top:10px; margin-left:10px; background-color:#E7E7E9;">
+        <span style="font-size:12px; color:#4D3593;">WEBSITE:</span> <span style="font-size:12px; color:#333; font-weight:bolder;">http://gosen-innovative-technology.pro</span> |
+        <span style="font-size:12px; color:#4D3593;">EMAIL:</span> <span style="font-size:12px; color:#333; font-weight:bolder;">admin@gosen-innovative-technology.pro</span> |
+        <span style="font-size:12px; color:#4D3593;">PHONE:</span> <span style="font-size:12px; color:#333; font-weight:bolder;">+60146836108</span><br>
+        <span style="font-size:12px; color:#4D3593; text-transform:uppercase;">ADDRESS:</span>
+        <span style="font-size:12px; color:#333; font-weight:bolder;">No 66, Kampung traditional keda kedag, Jln Sungai Tiang, 06750 Pendang, kedah, Malaysia</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div align="center" style="margin-top:10px;">
+  <a href="/admin/dashboard/consignments.html">« Back</a>
+</div>
+
+<script>
+  async function loadPrint() {
+    const params = new URLSearchParams(window.location.search);
+    const trackingNumber = params.get('t');
+    if (!trackingNumber) return;
+
+    try {
+      const res = await fetch(`/api/consignments/track/${trackingNumber}`);
+      const data = await res.json();
+      if (!data.ok) return;
+
+      const c = data.consignment;
+
+      // AWB
+      document.getElementById('p-awb').textContent = c.trackingNumber;
+      document.getElementById('p-awb2').textContent = c.trackingNumber;
+
+      // Date
+      document.getElementById('p-date').textContent = c.departure ? new Date(c.departure).toLocaleDateString() : '';
+
+      // Sender
+      document.getElementById('p-sender-name').textContent = c.sender?.name || '';
+      document.getElementById('p-sender-phone').textContent = c.sender?.phone || '';
+      document.getElementById('p-sender-company').textContent = c.sender?.company || '';
+      document.getElementById('p-sender-address').textContent = c.sender?.address || '';
+      document.getElementById('p-sender-city').textContent = c.sender?.city || '';
+      document.getElementById('p-sender-state').textContent = c.sender?.state || '';
+      document.getElementById('p-sender-country').textContent = c.sender?.country || '';
+      document.getElementById('p-sender-zip').textContent = c.sender?.zip || '';
+      document.getElementById('p-sender-email').textContent = c.sender?.email || '';
+
+      // Reference
+      document.getElementById('p-reference').textContent = c.trackingNumber;
+
+      // Receiver
+      document.getElementById('p-receiver-name').textContent = c.receiver?.name || '';
+      document.getElementById('p-receiver-phone').textContent = c.receiver?.phone || '';
+      document.getElementById('p-receiver-company').textContent = c.receiver?.company || '';
+      document.getElementById('p-receiver-address').textContent = c.receiver?.address || '';
+      document.getElementById('p-receiver-city').textContent = c.receiver?.city || '';
+      document.getElementById('p-receiver-state').textContent = c.receiver?.state || '';
+      document.getElementById('p-receiver-country').textContent = c.receiver?.country || '';
+      document.getElementById('p-receiver-zip').textContent = c.receiver?.zip || '';
+      document.getElementById('p-receiver-email').textContent = c.receiver?.email || '';
+
+      // Shipment
+      document.getElementById('p-departure').textContent = c.departure ? new Date(c.departure).toLocaleDateString() : '';
+      document.getElementById('p-arrival').textContent = c.arrival ? new Date(c.arrival).toLocaleDateString() : '';
+      document.getElementById('p-route').textContent = `${c.sender?.country || ''} - ${c.receiver?.country || ''}`;
+      document.getElementById('p-description').textContent = c.description || '';
+      document.getElementById('p-price').textContent = c.price || '';
+
+    } catch (err) {
+      console.error('Failed to load consignment:', err);
+    }
+  }
+
+  loadPrint();
+</script>
+
+</body>
+</html>
