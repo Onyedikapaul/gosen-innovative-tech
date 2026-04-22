@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="zxx" class="js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Quotations - GOSEN INNOVATIVE TECHNOLOGY</title>
+    <link rel="icon" href="/assets/img/logo/logo-black.png" />
+    <link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=101" />
+    <link rel="stylesheet" href="assets/css/style.css?ver=101" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      .table td {
+        white-space: normal !important;
+      }
+      #loadingRow td {
+        text-align: center;
+        padding: 30px;
+        color: #888;
+      }
+      .badge-pending {
+        background: #fff3cd;
+        color: #856404;
+        padding: 3px 9px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .badge-accepted {
+        background: #d4edda;
+        color: #155724;
+        padding: 3px 9px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .badge-rejected {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 3px 9px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body class="user-dashboard">
+    <!-- TOPBAR -->
+    <div class="topbar" style="padding-top: 15px; padding-bottom: 15px">
+      <div class="topbar-md d-lg-none">
+        <div class="container">
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="#" class="toggle-nav">
+              <div class="toggle-icon">
+                <span class="toggle-line"></span
+                ><span class="toggle-line"></span>
+                <span class="toggle-line"></span
+                ><span class="toggle-line"></span>
+              </div>
+            </a>
+            <div class="site-logo"><a href="../" class="site-brand"></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="d-lg-flex align-items-center justify-content-between">
+          <div class="topbar-lg d-none d-lg-block">
+            <div class="site-logo"><a href="../" class="site-brand"></a></div>
+          </div>
+          <div class="topbar-action d-none d-lg-block">
+            <ul class="topbar-action-list">
+              <li class="dropdown topbar-action-item topbar-action-language">
+                <a href="#" data-toggle="dropdown"
+                  >EN <i class="fas fa-chevron-down"></i
+                ></a>
+              </li>
+              <li class="dropdown topbar-action-item topbar-action-user">
+                <a href="#" data-toggle="dropdown">
+                  <img
+                    class="icon"
+                    src="assets/images/user-thumb-sm.png"
+                    alt="thumb"
+                  />
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="user-dropdown">
+                    <div class="user-dropdown-head">
+                      <h6 class="user-dropdown-name">Admin</h6>
+                    </div>
+                    <ul class="user-dropdown-links">
+                      <li>
+                        <a href="account.html"
+                          ><i class="fas fa-id-badge"></i> My Profile</a
+                        >
+                      </li>
+                      <li>
+                        <a href="security.html"
+                          ><i class="fas fa-lock"></i> Security</a
+                        >
+                      </li>
+                    </ul>
+                    <ul class="user-dropdown-links">
+                      <li>
+                        <a href="#" id="logoutBtn"
+                          ><i class="fas fa-power-off"></i> Logout</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-wraper">
+      <div class="container">
+        <div class="d-flex">
+          <!-- SIDEBAR -->
+          <div class="user-sidebar">
+            <div class="user-sidebar-overlay"></div>
+            <ul class="user-icon-nav">
+              <li>
+                <a href="consignments.html"
+                  ><i class="fas fa-truck"></i> Consignments</a
+                >
+              </li>
+              <li>
+                <a href="add-consignment.html"
+                  ><i class="fas fa-pen"></i> Add Consignment</a
+                >
+              </li>
+              <li>
+                <a href="quotations.html"
+                  ><i class="fas fa-file-invoice-dollar"></i> Quotations</a
+                >
+              </li>
+              <li>
+                <a href="add-quotation.html"
+                  ><i class="fas fa-pen"></i> Add Quotation</a
+                >
+              </li>
+              <li>
+                <a href="receipts.html"
+                  ><i class="fas fa-file-alt"></i> Receipts</a
+                >
+              </li>
+              <li>
+                <a href="add-receipt.html"
+                  ><i class="fas fa-pen"></i> Add Receipt</a
+                >
+              </li>
+              <li>
+                <a href="#" id="logoutBtn2"
+                  ><i class="fas fa-power-off"></i> Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- CONTENT -->
+          <div class="user-content">
+            <div class="user-panel">
+              <h2 class="user-panel-title">Quotations</h2>
+
+              <table class="data-table tranx-table">
+                <thead>
+                  <tr>
+                    <th class="tranx-status"></th>
+                    <th class="tranx-no"><span>Quote No.</span></th>
+                    <th class="tranx-token"><span>Customer Name</span></th>
+                    <th class="tranx-token"><span>Status</span></th>
+                    <th class="tranx-action"></th>
+                  </tr>
+                </thead>
+                <tbody id="quotationTableBody">
+                  <tr id="loadingRow">
+                    <td colspan="5">Loading quotations...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal fade" id="quotationModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <a
+            href="#"
+            class="modal-close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <i class="fas fa-times"></i>
+          </a>
+          <div class="tranx-popup">
+            <form id="modalForm" class="tranx-purchase-details">
+              <h6>Quotation Details</h6>
+              <ul class="tranx-purchase-info">
+                <li>
+                  <div class="tranx-purchase-head">Quote No.</div>
+                  <div class="tranx-purchase-des">
+                    <span id="modal-quotationNumber"></span>
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Customer Name</div>
+                  <div class="tranx-purchase-des">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="modal-customerName"
+                    />
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Customer Phone</div>
+                  <div class="tranx-purchase-des">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="modal-customerPhone"
+                    />
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Customer Email</div>
+                  <div class="tranx-purchase-des">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="modal-customerEmail"
+                    />
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Pickup Location</div>
+                  <div class="tranx-purchase-des">
+                    <input type="text" class="form-control" id="modal-pickup" />
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Delivery Location</div>
+                  <div class="tranx-purchase-des">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="modal-delivery"
+                    />
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Weight</div>
+                  <div class="tranx-purchase-des">
+                    <input type="text" class="form-control" id="modal-weight" />
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Price</div>
+                  <div class="tranx-purchase-des">
+                    <input type="text" class="form-control" id="modal-price" />
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Currency</div>
+                  <div class="tranx-purchase-des">
+                    <select class="form-control" id="modal-currency">
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="GBP">GBP</option>
+                      <option value="NGN">NGN</option>
+                    </select>
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Status</div>
+                  <div class="tranx-purchase-des">
+                    <select class="form-control" id="modal-status">
+                      <option value="Pending">Pending</option>
+                      <option value="Accepted">Accepted</option>
+                      <option value="Rejected">Rejected</option>
+                    </select>
+                  </div>
+                </li>
+                <li>
+                  <div class="tranx-purchase-head">Date</div>
+                  <div class="tranx-purchase-des">
+                    <input type="date" class="form-control" id="modal-date" />
+                  </div>
+                </li>
+              </ul>
+
+              <h6><span>Package Description</span></h6>
+              <div class="tranx-payment-info">
+                <textarea
+                  class="form-control"
+                  id="modal-packageDescription"
+                  rows="2"
+                ></textarea>
+              </div>
+
+              <h6 style="margin-top: 12px"><span>Notes</span></h6>
+              <div class="tranx-payment-info">
+                <textarea
+                  class="form-control"
+                  id="modal-notes"
+                  rows="2"
+                ></textarea>
+              </div>
+
+              <div
+                style="
+                  margin-top: 15px;
+                  display: flex;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                  align-items: center;
+                "
+              >
+                <button type="button" id="modalSaveBtn" class="btn btn-primary">
+                  Save
+                </button>
+                <a id="modalPrintBtn" href="#" class="btn btn-warning">Print</a>
+                <button
+                  type="button"
+                  id="modalDeleteBtn"
+                  class="btn btn-danger"
+                >
+                  Delete
+                </button>
+              </div>
+
+              <p
+                id="modalMsg"
+                style="
+                  margin-top: 10px;
+                  display: none;
+                  padding: 8px;
+                  border-radius: 4px;
+                "
+              ></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/jquery.bundle.js?ver=101"></script>
+    <script src="assets/js/script.js?ver=101"></script>
+    <script>
+      let currentId = null;
+
+      document.querySelectorAll("#logoutBtn, #logoutBtn2").forEach((btn) => {
+        btn.addEventListener("click", async function (e) {
+          e.preventDefault();
+          await fetch("/api/admin/auth/logout", {
+            method: "POST",
+            credentials: "include",
+          });
+          window.location.href = "/admin/auth/login.html";
+        });
+      });
+
+      function toDateInput(val) {
+        if (!val) return "";
+        return new Date(val).toISOString().split("T")[0];
+      }
+
+      function badgeHtml(status) {
+        const cls =
+          status === "Accepted"
+            ? "badge-accepted"
+            : status === "Rejected"
+              ? "badge-rejected"
+              : "badge-pending";
+        return `<span class="${cls}">${status}</span>`;
+      }
+
+      async function loadQuotations() {
+        try {
+          const res = await fetch("/api/admin/quotations", {
+            credentials: "include",
+          });
+          const data = await res.json();
+          const tbody = document.getElementById("quotationTableBody");
+
+          if (!data.ok || !data.quotations.length) {
+            tbody.innerHTML =
+              '<tr><td colspan="5" style="text-align:center;padding:30px;color:#888;">No quotations found.</td></tr>';
+            return;
+          }
+
+          tbody.innerHTML = data.quotations
+            .map(
+              (q) => `
+          <tr>
+            <td class="tranx-status tranx-status-approved">
+              <i class="fas fa-file-invoice-dollar"></i>
+            </td>
+            <td class="tranx-no"><span>${q.quotationNumber}</span></td>
+            <td class="tranx-token"><span>${q.customer?.name || "—"}</span></td>
+            <td class="tranx-token">${badgeHtml(q.status)}</td>
+            <td class="tranx-action">
+              <a href="#" onclick="openModal('${q._id}'); return false;">
+                <i class="fas fa-ellipsis-h"></i>
+              </a>
+            </td>
+          </tr>
+        `,
+            )
+            .join("");
+        } catch (err) {
+          document.getElementById("quotationTableBody").innerHTML =
+            '<tr><td colspan="5" style="text-align:center;padding:30px;color:red;">Failed to load quotations.</td></tr>';
+        }
+      }
+
+      async function openModal(id) {
+        currentId = id;
+        const msg = document.getElementById("modalMsg");
+        msg.style.display = "none";
+
+        try {
+          const res = await fetch(`/api/admin/quotations/${id}`, {
+            credentials: "include",
+          });
+          const data = await res.json();
+          if (!data.ok) return;
+
+          const q = data.quotation;
+
+          document.getElementById("modal-quotationNumber").textContent =
+            q.quotationNumber;
+          document.getElementById("modal-customerName").value =
+            q.customer?.name || "";
+          document.getElementById("modal-customerPhone").value =
+            q.customer?.phone || "";
+          document.getElementById("modal-customerEmail").value =
+            q.customer?.email || "";
+          document.getElementById("modal-pickup").value = q.pickup || "";
+          document.getElementById("modal-delivery").value = q.delivery || "";
+          document.getElementById("modal-weight").value = q.weight || "";
+          document.getElementById("modal-price").value = q.price || "";
+          document.getElementById("modal-currency").value = q.currency || "USD";
+          document.getElementById("modal-status").value = q.status || "Pending";
+          document.getElementById("modal-date").value = toDateInput(q.date);
+          document.getElementById("modal-packageDescription").value =
+            q.packageDescription || "";
+          document.getElementById("modal-notes").value = q.notes || "";
+          document.getElementById("modalPrintBtn").href =
+            `quotation-print.html?t=${q.quotationNumber}`;
+
+          $("#quotationModal").modal("show");
+        } catch (err) {
+          alert("Failed to load quotation details.");
+        }
+      }
+
+      document
+        .getElementById("modalSaveBtn")
+        .addEventListener("click", async function () {
+          const btn = this;
+          const msg = document.getElementById("modalMsg");
+          btn.disabled = true;
+          btn.textContent = "Saving...";
+          msg.style.display = "none";
+
+          const payload = {
+            customerName: document.getElementById("modal-customerName").value,
+            customerPhone: document.getElementById("modal-customerPhone").value,
+            customerEmail: document.getElementById("modal-customerEmail").value,
+            pickup: document.getElementById("modal-pickup").value,
+            delivery: document.getElementById("modal-delivery").value,
+            weight: document.getElementById("modal-weight").value,
+            price: document.getElementById("modal-price").value,
+            currency: document.getElementById("modal-currency").value,
+            status: document.getElementById("modal-status").value,
+            date: document.getElementById("modal-date").value,
+            packageDescription: document.getElementById(
+              "modal-packageDescription",
+            ).value,
+            notes: document.getElementById("modal-notes").value,
+          };
+
+          try {
+            const res = await fetch(`/api/admin/quotations/${currentId}`, {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include",
+              body: JSON.stringify(payload),
+            });
+            const data = await res.json();
+
+            if (data.ok) {
+              msg.style.color = "green";
+              msg.style.background = "#eaffea";
+              msg.textContent = "✓ Saved successfully!";
+              msg.style.display = "block";
+              loadQuotations();
+            } else {
+              msg.style.color = "red";
+              msg.style.background = "#fff0f0";
+              msg.textContent = data.message || "Failed to save.";
+              msg.style.display = "block";
+            }
+          } catch (err) {
+            msg.style.color = "red";
+            msg.style.background = "#fff0f0";
+            msg.textContent = "Network error.";
+            msg.style.display = "block";
+          } finally {
+            btn.disabled = false;
+            btn.textContent = "Save";
+          }
+        });
+
+      document
+        .getElementById("modalDeleteBtn")
+        .addEventListener("click", async function () {
+          if (!confirm("Are you sure you want to delete this quotation?"))
+            return;
+
+          const btn = this;
+          btn.disabled = true;
+          btn.textContent = "Deleting...";
+
+          try {
+            const res = await fetch(`/api/admin/quotations/${currentId}`, {
+              method: "DELETE",
+              credentials: "include",
+            });
+            const data = await res.json();
+
+            if (data.ok) {
+              $("#quotationModal").modal("hide");
+              loadQuotations();
+            } else {
+              alert(data.message || "Failed to delete.");
+            }
+          } catch (err) {
+            alert("Network error.");
+          } finally {
+            btn.disabled = false;
+            btn.textContent = "Delete";
+          }
+        });
+
+      loadQuotations();
+    </script>
+
+    <script src="/admin-script/checkAuth.js"></script>
+  </body>
+</html>

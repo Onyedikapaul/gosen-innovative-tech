@@ -9,6 +9,7 @@ import AdminAuthRouter from "./controller/AdminAuthController.js";
 import ConsignmentRouter from "./controller/ConsignmentController.js";
 import publicRouter from "./controller/publicRoutes.js";
 import ReceiptRouter from "./controller/ReceipientController.js";
+import QuotationRouter from "./controller/QuatationController.js";
 
 
 const app = express();
@@ -53,6 +54,7 @@ app.use(express.static(__dirname));
 app.use("/api/admin/auth", AdminAuthRouter);
 app.use("/api/admin/consignments", ConsignmentRouter);
 app.use("/api/admin/receipts", ReceiptRouter);
+app.use("/api/admin/quotations", QuotationRouter);
 app.use("/api", publicRouter);
 
 // Test route

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zxx" class="js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Add Quotation - GOSEN INNOVATIVE TECHNOLOGY</title>
+  <link rel="icon" href="/assets/img/logo/logo-black.png">
+  <link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=101">
+  <link rel="stylesheet" href="assets/css/style.css?ver=101">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="user-dashboard">
+
+  <!-- TOPBAR -->
+  <div class="topbar" style="padding-top: 15px; padding-bottom: 15px">
+    <div class="topbar-md d-lg-none">
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <a href="#" class="toggle-nav">
+            <div class="toggle-icon">
+              <span class="toggle-line"></span><span class="toggle-line"></span>
+              <span class="toggle-line"></span><span class="toggle-line"></span>
+            </div>
+          </a>
+          <div class="site-logo"><a href="../" class="site-brand"></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="d-lg-flex align-items-center justify-content-between">
+        <div class="topbar-lg d-none d-lg-block">
+          <div class="site-logo"><a href="../" class="site-brand"></a></div>
+        </div>
+        <div class="topbar-action d-none d-lg-block">
+          <ul class="topbar-action-list">
+            <li class="dropdown topbar-action-item topbar-action-language">
+              <a href="#" data-toggle="dropdown">EN <i class="fas fa-chevron-down"></i></a>
+            </li>
+            <li class="dropdown topbar-action-item topbar-action-user">
+              <a href="#" data-toggle="dropdown">
+                <img class="icon" src="assets/images/user-thumb-sm.png" alt="thumb">
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="user-dropdown">
+                  <div class="user-dropdown-head">
+                    <h6 class="user-dropdown-name">Admin</h6>
+                  </div>
+                  <ul class="user-dropdown-links">
+                    <li><a href="account.html"><i class="fa fa-id-badge"></i> My Profile</a></li>
+                    <li><a href="security.html"><i class="fa fa-lock"></i> Security</a></li>
+                  </ul>
+                  <ul class="user-dropdown-links">
+                    <li><a href="#" id="logoutBtn"><i class="fa fa-power-off"></i> Logout</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="user-wraper">
+    <div class="container">
+      <div class="d-flex">
+
+        <!-- SIDEBAR -->
+        <div class="user-sidebar">
+          <div class="user-sidebar-overlay"></div>
+          <ul class="user-icon-nav">
+            <li><a href="consignments.html"><i class="fa fa-truck"></i> Consignments</a></li>
+            <li><a href="add-consignment.html"><i class="fa fa-pen"></i> Add Consignment</a></li>
+            <li><a href="quotations.html"><i class="fas fa-file-invoice-dollar"></i> Quotations</a></li>
+            <li><a href="add-quotation.html"><i class="fa fa-pen"></i> Add Quotation</a></li>
+            <li><a href="receipts.html"><i class="fa fa-file-alt"></i> Receipts</a></li>
+            <li><a href="add-receipt.html"><i class="fa fa-pen"></i> Add Receipt</a></li>
+            <li><a href="#" id="logoutBtn2"><i class="fa fa-power-off"></i> Logout</a></li>
+          </ul>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="user-content">
+          <div class="user-panel">
+            <div class="">
+              <h2>Add New Quotation</h2>
+
+              <p id="formMsg" style="margin-top:10px; display:none; padding:10px; border-radius:4px;"></p>
+
+              <form id="quotationForm">
+                <div class="row">
+
+                  <!-- CUSTOMER -->
+                  <div class="col-md-12">
+                    <h4>Customer Information</h4>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Customer Name</label>
+                      <input class="input-bordered" type="text" name="customerName">
+                    </div>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Customer Phone</label>
+                      <input class="input-bordered" type="text" name="customerPhone">
+                    </div>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Customer Email</label>
+                      <input class="input-bordered" type="email" name="customerEmail">
+                    </div>
+                  </div>
+
+                  <!-- DELIVERY INFO -->
+                  <div class="col-md-12">
+                    <h4>Delivery Information</h4>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Pickup Location</label>
+                      <input class="input-bordered" type="text" name="pickup">
+                    </div>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Delivery Location</label>
+                      <input class="input-bordered" type="text" name="delivery">
+                    </div>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Package Description</label>
+                      <textarea class="input-bordered" name="packageDescription" rows="3"></textarea>
+                    </div>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Weight (e.g. 5kg)</label>
+                      <input class="input-bordered" type="text" name="weight">
+                    </div>
+                  </div>
+
+                  <!-- PRICING -->
+                  <div class="col-md-12">
+                    <h4>Pricing</h4>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Quoted Price</label>
+                      <input class="input-bordered" type="text" name="price">
+                    </div>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Currency</label>
+                      <select class="input-bordered" name="currency">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="NGN">NGN</option>
+                      </select>
+                    </div>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Date</label>
+                      <input class="input-bordered" type="date" name="date">
+                    </div>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Status</label>
+                      <select class="input-bordered" name="status">
+                        <option value="Pending">Pending</option>
+                        <option value="Accepted">Accepted</option>
+                        <option value="Rejected">Rejected</option>
+                      </select>
+                    </div>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Notes (optional)</label>
+                      <textarea class="input-bordered" name="notes" rows="3"></textarea>
+                    </div>
+                  </div>
+
+                  <!-- AGENT -->
+                  <div class="col-md-12">
+                    <h4>Agent Information</h4>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Agent Name</label>
+                      <input class="input-bordered" type="text" name="agentName">
+                    </div>
+                    <div class="input-item input-with-label">
+                      <label class="input-item-label">Agent Phone</label>
+                      <input class="input-bordered" type="text" name="agentPhone">
+                    </div>
+
+                    <div class="gaps-1x"></div>
+                    <div class="d-sm-flex justify-content-between align-items-center">
+                      <button type="button" id="submitBtn" class="btn btn-primary">Proceed</button>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/jquery.bundle.js?ver=101"></script>
+  <script src="assets/js/script.js?ver=101"></script>
+  <script>
+    document.querySelectorAll('#logoutBtn, #logoutBtn2').forEach(btn => {
+      btn.addEventListener('click', async function (e) {
+        e.preventDefault();
+        await fetch('/api/admin/auth/logout', { method: 'POST', credentials: 'include' });
+        window.location.href = '/admin/auth/login.html';
+      });
+    });
+
+    document.getElementById('submitBtn').addEventListener('click', async function () {
+      const btn = this;
+      const msg = document.getElementById('formMsg');
+      msg.style.display = 'none';
+
+      const form = document.getElementById('quotationForm');
+      const get = (name) => form.querySelector(`[name="${name}"]`)?.value || '';
+
+      const payload = {
+        customerName:       get('customerName'),
+        customerPhone:      get('customerPhone'),
+        customerEmail:      get('customerEmail'),
+        pickup:             get('pickup'),
+        delivery:           get('delivery'),
+        packageDescription: get('packageDescription'),
+        weight:             get('weight'),
+        price:              get('price'),
+        currency:           get('currency'),
+        date:               get('date'),
+        status:             get('status'),
+        notes:              get('notes'),
+        agentName:          get('agentName'),
+        agentPhone:         get('agentPhone'),
+      };
+
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+
+      try {
+        const res = await fetch('/api/admin/quotations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json();
+
+        if (data.ok) {
+          window.location.href = 'quotations.html';
+        } else {
+          msg.style.color = 'red';
+          msg.style.background = '#fff0f0';
+          msg.textContent = data.message || 'Failed. Try again.';
+          msg.style.display = 'block';
+        }
+      } catch (err) {
+        msg.style.color = 'red';
+        msg.style.background = '#fff0f0';
+        msg.textContent = 'Network error. Please try again.';
+        msg.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Proceed';
+      }
+    });
+  </script>
+
+  <script src="/admin-script/checkAuth.js"></script>
+</body>
+</html>

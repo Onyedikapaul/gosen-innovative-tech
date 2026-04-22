@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/assets/img/logo/logo-black.png">
+  <title>GOSEN INNOVATIVE TECHNOLOGY - Quotation</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+
+  <style>
+    .invoice-wrapper {
+      margin: 20px auto;
+      max-width: 700px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    .invoice-top {
+      background-color: #fafafa;
+      padding: 40px 60px;
+    }
+    .invoice-top-left { margin-top: 60px; }
+    .invoice-top-left h2, .invoice-top-left h6 {
+      line-height: 1.5;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .invoice-top-left h4 {
+      margin-top: 30px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .invoice-top-left h5 {
+      line-height: 1.4;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+    }
+    .invoice-top-right h2, .invoice-top-right h6 {
+      text-align: right;
+      line-height: 1.5;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .invoice-top-right h5 {
+      line-height: 1.4;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      text-align: right;
+      margin-top: 0;
+    }
+    .our-company-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    .our-address {
+      font-size: 13px;
+      margin-top: 0;
+      color: rgba(0,0,0,0.75);
+    }
+    .invoice-bottom {
+      background-color: #ffffff;
+      padding: 40px 60px;
+      position: relative;
+    }
+    .title {
+      font-size: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .quote-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 25px;
+    }
+    .badge-pending  { background: #fff3cd; color: #856404; }
+    .badge-accepted { background: #d4edda; color: #155724; }
+    .badge-rejected { background: #f8d7da; color: #721c24; }
+    .divider {
+      margin-top: 50px;
+      margin-bottom: 5px;
+    }
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 26px;
+      background-color: #323149;
+    }
+    .print-btn {
+      display: block;
+      text-align: center;
+      margin: 20px auto;
+    }
+    @media print {
+      .print-btn { display: none; }
+      .back-btn  { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="print-btn">
+    <button onclick="window.print()" class="btn btn-primary">
+      <span class="glyphicon glyphicon-print"></span> Print Quotation
+    </button>
+    <a href="quotations.html" class="btn btn-default back-btn" style="margin-left:10px;">« Back</a>
+  </div>
+
+  <section class="back">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="invoice-wrapper">
+
+            <!-- TOP: Logo + Company -->
+            <div class="invoice-top">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="invoice-top-right">
+                    <img src="/admin/dashboard/assets/images/logo-1.png" class="img-fluid" style="width:100%" />
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="invoice-top-right">
+                    <h2 class="our-company-name">Gosen Innovative Technology</h2>
+                    <h6 class="our-address">No 66, Kampung traditional keda kedag, Jln Sungai Tiang, 06750 Pendang, kedah, Malaysia</h6>
+                    <h5>admin@gosen-innovative-technology.pro</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MIDDLE: Customer Info + Quote No -->
+            <div class="invoice-top" style="background: #0a4649; color:#f8f8f8">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="invoice-top-left">
+                    <h2 class="our-company-name" style="color:#f8f8f8">PREPARED FOR:</h2>
+                    <h5 class="our-address" style="color:#f8f8f8">
+                      <b>Name: </b><span id="p-customer-name"></span>
+                    </h5>
+                    <h5 class="our-address" style="color:#f8f8f8">
+                      <b>Phone: </b><span id="p-customer-phone"></span>
+                    </h5>
+                    <h5 class="our-address" style="color:#f8f8f8">
+                      <b>Email: </b><span id="p-customer-email"></span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="invoice-top-left">
+                    <h5 class="our-address" style="color:#f8f8f8">
+                      <b>Quotation No: </b><span id="p-quotation-number"></span>
+                    </h5>
+                    <h6 class="our-address" style="color:#f8f8f8">
+                      <b>Date: </b><span id="p-date"></span>
+                    </h6>
+                    <h5 class="our-address" style="color:#f8f8f8; margin-top:10px;">
+                      <b>Status: </b><span id="p-status-badge"></span>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BOTTOM: Delivery + Pricing + Agent -->
+            <div class="invoice-bottom">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h2 class="title">Quotation</h2>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-offset-1 col-md-12 col-sm-12">
+                  <div class="invoice-bottom-right">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Description</th>
+                          <th>Details</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><b>Pickup Location</b></td>
+                          <td id="p-pickup"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Delivery Location</b></td>
+                          <td id="p-delivery"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Package Description</b></td>
+                          <td id="p-package-description"></td>
+                        </tr>
+                        <tr>
+                          <td><b>Weight</b></td>
+                          <td id="p-weight"></td>
+                        </tr>
+                        <tr style="height: 20px;"></tr>
+                      </tbody>
+                      <thead>
+                        <tr>
+                          <th>Quoted Price</th>
+                          <th id="p-price"></th>
+                        </tr>
+                      </thead>
+                    </table>
+
+                    <!-- Notes (only shown if present) -->
+                    <div id="notes-section" style="display:none; margin-top:10px;">
+                      <p style="font-family:'Montserrat',sans-serif; font-size:13px; color:rgba(0,0,0,0.75);">
+                        <b>Notes:</b> <span id="p-notes"></span>
+                      </p>
+                    </div>
+
+                    <ul>
+                      <li>This quotation is valid for 7 days from the date of issue.</li>
+                      <li>For more information contact our agent below.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-xs-12">
+                  <hr class="divider">
+                </div>
+
+                <div class="col-sm-6">
+                  <img src="/admin/dashboard/assets/images/images.png" />
+                </div>
+                <div class="col-sm-6 text-right">
+                  <img src="/admin/dashboard/assets/images/hj.png" width="45%" />
+                  <h5 class="our-address">
+                    <b>Agent Name: </b><span id="p-agent-name"></span>
+                  </h5>
+                  <h5 class="our-address">
+                    <b>Agent Phone Number: </b><span id="p-agent-phone"></span>
+                  </h5>
+                </div>
+              </div>
+              <div class="bottom-bar"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script>
+    async function loadQuotation() {
+      const params = new URLSearchParams(window.location.search);
+      const quotationNumber = params.get('t');
+      if (!quotationNumber) return;
+
+      try {
+        const res = await fetch(`/api/admin/quotations/${quotationNumber}`, {
+          credentials: 'include',
+        });
+        const data = await res.json();
+        if (!data.ok) return;
+
+        const q = data.quotation;
+
+        // Customer
+        document.getElementById('p-customer-name').textContent  = q.customer?.name  || '';
+        document.getElementById('p-customer-phone').textContent = q.customer?.phone || '';
+        document.getElementById('p-customer-email').textContent = q.customer?.email || '';
+
+        // Quote info
+        document.getElementById('p-quotation-number').textContent = q.quotationNumber;
+        document.getElementById('p-date').textContent = q.date
+          ? new Date(q.date).toLocaleDateString()
+          : '';
+
+        // Status badge
+        const statusEl = document.getElementById('p-status-badge');
+        const statusClass = q.status === 'Accepted' ? 'badge-accepted'
+                          : q.status === 'Rejected' ? 'badge-rejected'
+                          : 'badge-pending';
+        statusEl.innerHTML = `<span class="quote-badge ${statusClass}">${q.status || 'Pending'}</span>`;
+
+        // Delivery details
+        document.getElementById('p-pickup').textContent              = q.pickup              || '';
+        document.getElementById('p-delivery').textContent            = q.delivery            || '';
+        document.getElementById('p-package-description').textContent = q.packageDescription  || '';
+        document.getElementById('p-weight').textContent              = q.weight              || '';
+
+        // Price
+        const currency = q.currency || 'USD';
+        const price    = q.price    || '';
+        document.getElementById('p-price').textContent = price ? `${currency} ${price}` : '';
+
+        // Notes — only show row if there's content
+        if (q.notes && q.notes.trim()) {
+          document.getElementById('p-notes').textContent = q.notes;
+          document.getElementById('notes-section').style.display = 'block';
+        }
+
+        // Agent
+        document.getElementById('p-agent-name').textContent  = q.agent?.name  || '';
+        document.getElementById('p-agent-phone').textContent = q.agent?.phone || '';
+
+      } catch (err) {
+        console.error('Failed to load quotation:', err);
+      }
+    }
+
+    loadQuotation();
+  </script>
+
+  <script src="/admin-script/checkAuth.js"></script>
+
+</body>
+</html>
